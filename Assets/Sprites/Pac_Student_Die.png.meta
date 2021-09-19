@@ -1,0 +1,600 @@
+fileFormatVersion: 2
+guid: c6e21ef4759d2ca4ebe1c687a28ac0fb
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -66435485799909105
+    second: Pac_Student_Die_0
+  - first:
+      213: -2279246627280986361
+    second: Pac_Student_Die_1
+  - first:
+      213: -3370748953470880910
+    second: Pac_Student_Die_2
+  - first:
+      213: -3504557161346354937
+    second: Pac_Student_Die_3
+  - first:
+      213: 7425754485560395833
+    second: Pac_Student_Die_4
+  - first:
+      213: -1249079027828319359
+    second: Pac_Student_Die_5
+  - first:
+      213: -8178010615406621357
+    second: Pac_Student_Die_6
+  - first:
+      213: 8977917345398405569
+    second: Pac_Student_Die_7
+  - first:
+      213: -7519551165757221272
+    second: Pac_Student_Die_8
+  - first:
+      213: 8528596902871893396
+    second: Pac_Student_Die_9
+  - first:
+      213: -2270680568474839032
+    second: Pac_Student_Die_10
+  - first:
+      213: -4062825114044006348
+    second: Pac_Student_Die_11
+  - first:
+      213: 1271088316885812503
+    second: Pac_Student_Die_12
+  - first:
+      213: 3299770490400965238
+    second: Pac_Student_Die_13
+  - first:
+      213: -1140265771151131946
+    second: Pac_Student_Die_14
+  - first:
+      213: -5761853451134400746
+    second: Pac_Student_Die_15
+  - first:
+      213: 5789325183162733402
+    second: Pac_Student_Die_16
+  - first:
+      213: 3464918895260561985
+    second: Pac_Student_Die_17
+  - first:
+      213: 8119519874529609317
+    second: Pac_Student_Die_18
+  - first:
+      213: -2260403878106095962
+    second: Pac_Student_Die_19
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Pac_Student_Die_0
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 151
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f097a641749f31ff0800000000000000
+      internalID: -66435485799909105
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_1
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 151
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70fd869b44d7e50e0800000000000000
+      internalID: -2279246627280986361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_2
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 151
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27339519fa1b831d0800000000000000
+      internalID: -3370748953470880910
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_3
+      rect:
+        serializedVersion: 2
+        x: 392
+        y: 151
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70136e664df4d5fc0800000000000000
+      internalID: -3504557161346354937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_4
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 151
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 938471d7c549d0760800000000000000
+      internalID: 7425754485560395833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_5
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 151
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 18b17e9fd316aaee0800000000000000
+      internalID: -1249079027828319359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_6
+      rect:
+        serializedVersion: 2
+        x: 776
+        y: 151
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35d805b9caed18e80800000000000000
+      internalID: -8178010615406621357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_7
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 151
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c93a433248f79c70800000000000000
+      internalID: 8977917345398405569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_8
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 151
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8669aa61e0035a790800000000000000
+      internalID: -7519551165757221272
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_9
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 151
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4950d2c52b9ab5670800000000000000
+      internalID: 8528596902871893396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_10
+      rect:
+        serializedVersion: 2
+        x: 8
+        y: 23
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 808dca5bd0cec70e0800000000000000
+      internalID: -2270680568474839032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_11
+      rect:
+        serializedVersion: 2
+        x: 136
+        y: 23
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4300fd4a512fd97c0800000000000000
+      internalID: -4062825114044006348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_12
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 23
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 715c026f610d3a110800000000000000
+      internalID: 1271088316885812503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_13
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 23
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6728aa037c32bcd20800000000000000
+      internalID: 3299770490400965238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_14
+      rect:
+        serializedVersion: 2
+        x: 521
+        y: 23
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dafff09256fc20f0800000000000000
+      internalID: -1140265771151131946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_15
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 23
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 617864550d8c900b0800000000000000
+      internalID: -5761853451134400746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_16
+      rect:
+        serializedVersion: 2
+        x: 777
+        y: 23
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a5353a7b490d75050800000000000000
+      internalID: 5789325183162733402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_17
+      rect:
+        serializedVersion: 2
+        x: 904
+        y: 23
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1427b87906dd51030800000000000000
+      internalID: 3464918895260561985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_18
+      rect:
+        serializedVersion: 2
+        x: 1032
+        y: 23
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 566cf0c8e445ea070800000000000000
+      internalID: 8119519874529609317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pac_Student_Die_19
+      rect:
+        serializedVersion: 2
+        x: 1160
+        y: 23
+        width: 108
+        height: 90
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ae129426ae61a0e0800000000000000
+      internalID: -2260403878106095962
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 0bde4e8527bfa97458f4ad341e6c7d06
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
