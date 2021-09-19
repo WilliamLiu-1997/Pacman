@@ -22,7 +22,6 @@ public class Ghost_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if(Input.GetKeyDown(KeyCode.Space)){
         if(duration_Normal>=3){
             Ghost_Animator.SetTrigger("Scare");
             duration_Normal=-1;
