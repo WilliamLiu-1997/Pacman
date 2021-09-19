@@ -27,7 +27,7 @@ public class Pac_Student_Direction_Controller : MonoBehaviour
             Pac_Animator.SetInteger("State",4);
         }
         if(Input.GetKeyDown(KeyCode.Space)){
-            Pac_Animator.SetInteger("State",5);
+            Pac_Animator.SetTrigger("Die");
         }
     }
 }

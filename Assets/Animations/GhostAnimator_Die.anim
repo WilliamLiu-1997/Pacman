@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Power_Pellet
+  m_Name: GhostAnimator_Die
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,9 +20,9 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: -2077760981032839843, guid: b54b0014722f6a940b376369c8ab726e, type: 3}
+      value: {fileID: -3609731688300175317, guid: fe70518aeaea70a4b93dce5304525c9c, type: 3}
     - time: 0.1
-      value: {fileID: 306621972079795244, guid: b54b0014722f6a940b376369c8ab726e, type: 3}
+      value: {fileID: 7119271859143676019, guid: fe70518aeaea70a4b93dce5304525c9c, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -42,8 +42,8 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: -2077760981032839843, guid: b54b0014722f6a940b376369c8ab726e, type: 3}
-    - {fileID: 306621972079795244, guid: b54b0014722f6a940b376369c8ab726e, type: 3}
+    - {fileID: -3609731688300175317, guid: fe70518aeaea70a4b93dce5304525c9c, type: 3}
+    - {fileID: 7119271859143676019, guid: fe70518aeaea70a4b93dce5304525c9c, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
