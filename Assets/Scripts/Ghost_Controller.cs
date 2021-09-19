@@ -41,5 +41,19 @@ public class Ghost_Controller : MonoBehaviour
         if(duration_Scare>=0)duration_Scare+=Time.deltaTime;
         if(duration_Awake>=0)duration_Awake+=Time.deltaTime;
         if(duration_Die>=0)duration_Die+=Time.deltaTime;
+
+
+        if(Input.GetKeyDown(KeyCode.UpArrow)){
+            gameObject.transform.eulerAngles=new Vector3(0, 0, 0);
+        }
+        if(Input.GetKeyDown(KeyCode.DownArrow)){
+            gameObject.transform.eulerAngles=new Vector3(0, 0, 180);
+        }
+        if(Input.GetKeyDown(KeyCode.LeftArrow)){
+            gameObject.transform.eulerAngles=new Vector3(0, 0, 90);
+        }
+        if(Input.GetKeyDown(KeyCode.RightArrow)){
+            gameObject.transform.eulerAngles=new Vector3(0, 0, -90);
+        }
     }
 }
