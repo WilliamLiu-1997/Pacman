@@ -310,6 +310,7 @@ GameObject:
   - component: {fileID: 2119546208}
   - component: {fileID: 2119546207}
   - component: {fileID: 2119546206}
+  - component: {fileID: 2119546209}
   m_Layer: 0
   m_Name: Pac_Student
   m_TagString: Untagged
@@ -327,7 +328,7 @@ Animator:
   m_GameObject: {fileID: 2119546205}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 508844951b648c64eba566492943c9ed, type: 2}
+  m_Controller: {fileID: 9100000, guid: 1850b67a68d13f64c88a3bc459d50860, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -401,3 +402,15 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2119546209
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2119546205}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2da5836fe22cf7b43be08a0210efee63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
