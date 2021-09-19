@@ -134,6 +134,7 @@ GameObject:
   - component: {fileID: 10649433}
   - component: {fileID: 10649432}
   - component: {fileID: 10649431}
+  - component: {fileID: 10649434}
   m_Layer: 0
   m_Name: Pink_Ghost
   m_TagString: Untagged
@@ -225,6 +226,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &10649434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 10649430}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b08b5a4dca8641b49982225c13d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &19623851
 GameObject:
   m_ObjectHideFlags: 0
@@ -400,6 +413,7 @@ GameObject:
   - component: {fileID: 554114818}
   - component: {fileID: 554114817}
   - component: {fileID: 554114816}
+  - component: {fileID: 554114819}
   m_Layer: 0
   m_Name: Red_Ghost
   m_TagString: Untagged
@@ -491,6 +505,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &554114819
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 554114815}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b08b5a4dca8641b49982225c13d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,6 +704,7 @@ GameObject:
   - component: {fileID: 964163952}
   - component: {fileID: 964163951}
   - component: {fileID: 964163950}
+  - component: {fileID: 964163953}
   m_Layer: 0
   m_Name: Green_Ghost
   m_TagString: Untagged
@@ -769,6 +796,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &964163953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964163949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b08b5a4dca8641b49982225c13d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1052621629
 GameObject:
   m_ObjectHideFlags: 0
@@ -780,6 +819,7 @@ GameObject:
   - component: {fileID: 1052621632}
   - component: {fileID: 1052621631}
   - component: {fileID: 1052621630}
+  - component: {fileID: 1052621633}
   m_Layer: 0
   m_Name: Blue_Ghost
   m_TagString: Untagged
@@ -871,6 +911,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1052621633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1052621629}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d0b08b5a4dca8641b49982225c13d27, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1184487145
 GameObject:
   m_ObjectHideFlags: 0

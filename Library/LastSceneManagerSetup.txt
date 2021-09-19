@@ -1,5 +1,5 @@
 sceneSetups:
-- path: Assets/Scenes/SampleScene.unity
+- path: D:/Unity/13649975/Lab Week 3 - Activity/Assets/Scenes/Week3Scene.unity
   isLoaded: 1
   isActive: 1
   isSubScene: 0
