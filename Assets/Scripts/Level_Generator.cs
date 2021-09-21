@@ -50,7 +50,7 @@ public class Level_Generator : MonoBehaviour
         GameObject right_top;
         GameObject left_bottom;
         GameObject right_bottom;
-        GameObject map_object;
+        GameObject mapObject;
         int[] neighbor;
         int[] neighbor1;
         int[] neighbor2;
@@ -65,13 +65,13 @@ public class Level_Generator : MonoBehaviour
                     case 1:
                         break;
                     case 2:
-                        map_object=Outside_Wall;
+                        mapObject=Outside_Wall;
                         neighbor = new int[3]{1,2,7};
                         if((i<size_x-1&&neighbor.Contains(levelMap[j,i+1]))&&(i>0&&neighbor.Contains(levelMap[j,i-1]))){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             if(levelMap[j,i+1]==1){
                                 outside_corner_info.Add(j);
                                 outside_corner_info.Add(i+1);
@@ -84,13 +84,13 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if((j<size_y-1&&neighbor.Contains(levelMap[j+1,i]))&&(j>0&&neighbor.Contains(levelMap[j-1,i]))){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                             right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                             left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(levelMap[j+1,i]==1){
                                 outside_corner_info.Add(j+1);
@@ -104,10 +104,10 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i>0&&neighbor.Contains(levelMap[j,i-1])){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             if(levelMap[j,i-1]==1){
                                 outside_corner_info.Add(j);
                                 outside_corner_info.Add(i-1);
@@ -115,10 +115,10 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i<size_x-1&&neighbor.Contains(levelMap[j,i+1])){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             if(levelMap[j,i+1]==1){
                                 outside_corner_info.Add(j);
                                 outside_corner_info.Add(i+1);
@@ -126,13 +126,13 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j>0&&neighbor.Contains(levelMap[j-1,i])){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                             right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                             left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(levelMap[j-1,i]==1){
                                 outside_corner_info.Add(j-1);
@@ -141,13 +141,13 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j<size_y-1&&neighbor.Contains(levelMap[j+1,i])){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                             right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                             left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(levelMap[j-1,i]==1){
                                 outside_corner_info.Add(j+1);
@@ -156,10 +156,10 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i==size_x-1){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             if(levelMap[j,i-1]==1){
                                 outside_corner_info.Add(j);
                                 outside_corner_info.Add(i-1);
@@ -167,10 +167,10 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i==0){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             if(levelMap[j,i+1]==1){
                                 outside_corner_info.Add(j);
                                 outside_corner_info.Add(i+1);
@@ -178,13 +178,13 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j==size_y-1){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                             right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                             left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(levelMap[j-1,i]==1){
                                 outside_corner_info.Add(j-1);
@@ -193,13 +193,13 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j==0){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                             right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                             left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(levelMap[j-1,i]==1){
                                 outside_corner_info.Add(j+1);
@@ -211,13 +211,13 @@ public class Level_Generator : MonoBehaviour
                     case 3:
                         break;
                     case 4:
-                        map_object=Inside_Wall;
+                        mapObject=Inside_Wall;
                         neighbor = new int[3]{3,4,7};
                         if((i<size_x-1&&neighbor.Contains(levelMap[j,i+1]))&&(i>0&&neighbor.Contains(levelMap[j,i-1]))){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             if(levelMap[j,i+1]==3){
                                 inside_corner_info.Add(j);
                                 inside_corner_info.Add(i+1);
@@ -230,13 +230,13 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if((j<size_y-1&&neighbor.Contains(levelMap[j+1,i]))&&(j>0&&neighbor.Contains(levelMap[j-1,i]))){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                             right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                             left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(levelMap[j+1,i]==3){
                                 inside_corner_info.Add(j+1);
@@ -250,10 +250,10 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i>0&&neighbor.Contains(levelMap[j,i-1])){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             if(levelMap[j,i-1]==1){
                                 inside_corner_info.Add(j);
                                 inside_corner_info.Add(i-1);
@@ -261,10 +261,10 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i<size_x-1&&neighbor.Contains(levelMap[j,i+1])){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             if(levelMap[j,i+1]==1){
                                 inside_corner_info.Add(j);
                                 inside_corner_info.Add(i+1);
@@ -272,13 +272,13 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j>0&&neighbor.Contains(levelMap[j-1,i])){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                             right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                             left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(levelMap[j-1,i]==1){
                                 inside_corner_info.Add(j-1);
@@ -287,13 +287,13 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j<size_y-1&&neighbor.Contains(levelMap[j+1,i])){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                             right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                             left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(levelMap[j-1,i]==1){
                                 inside_corner_info.Add(j+1);
@@ -302,10 +302,10 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i==size_x-1){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             if(levelMap[j,i-1]==1){
                                 inside_corner_info.Add(j);
                                 inside_corner_info.Add(i-1);
@@ -313,10 +313,10 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i==0){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             if(levelMap[j,i+1]==1){
                                 inside_corner_info.Add(j);
                                 inside_corner_info.Add(i+1);
@@ -324,13 +324,13 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j==size_y-1){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                             right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                             left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(levelMap[j-1,i]==1){
                                 inside_corner_info.Add(j-1);
@@ -339,13 +339,13 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j==0){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                             right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                             left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                             right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(levelMap[j-1,i]==1){
                                 inside_corner_info.Add(j+1);
@@ -359,57 +359,57 @@ public class Level_Generator : MonoBehaviour
                     case 6:
                         break;
                     case 7:
-                        map_object=Junction;
+                        mapObject=Junction;
                         neighbor1 = new int[2]{1,2};
                         neighbor2 = new int[2]{3,4};
                         if(i<size_x-1&&j<size_y-1&&((neighbor1.Contains(levelMap[j,i+1])&&neighbor2.Contains(levelMap[j+1,i]))||(neighbor2.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j+1,i])))){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             if(neighbor1.Contains(levelMap[j,i+1])&&neighbor2.Contains(levelMap[j+1,i]))left_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
                             if(neighbor2.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j+1,i]))left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
                             right_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
                             left_bottom.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
                             right_bottom.transform.localScale=new Vector3(-left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
                         }
                         else if(i>0&&j<size_y-1&&((neighbor1.Contains(levelMap[j,i-1])&&neighbor2.Contains(levelMap[j+1,i]))||(neighbor2.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j+1,i])))){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             if(neighbor1.Contains(levelMap[j,i-1])&&neighbor2.Contains(levelMap[j+1,i])){};
                             if(neighbor2.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j+1,i])){
                                 left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                                 left_top.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
                                 }
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
                             right_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
                             left_bottom.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
                             right_bottom.transform.localScale=new Vector3(-left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
                         }
                         else if(i>0&&j>0&&((neighbor1.Contains(levelMap[j,i-1])&&neighbor2.Contains(levelMap[j-1,i]))||(neighbor2.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j-1,i])))){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             if(neighbor1.Contains(levelMap[j,i-1])&&neighbor2.Contains(levelMap[j-1,i]))left_top.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
                             if(neighbor2.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j-1,i]))left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
                             right_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
                             left_bottom.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
                             right_bottom.transform.localScale=new Vector3(-left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
                         }
                         else if(i<size_x-1&&j>0&&((neighbor1.Contains(levelMap[j,i+1])&&neighbor2.Contains(levelMap[j-1,i]))||(neighbor2.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j-1,i])))){
-                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                             if(neighbor1.Contains(levelMap[j,i+1])&&neighbor2.Contains(levelMap[j-1,i]))left_top.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                             if(neighbor2.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j-1,i])){
                                 left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                                 left_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
                                 }
-                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
+                            right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
                             right_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
-                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
+                            left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
                             left_bottom.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
-                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
+                            right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
                             right_bottom.transform.localScale=new Vector3(-left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
                         }
                         break;
@@ -420,7 +420,7 @@ public class Level_Generator : MonoBehaviour
         for(int j=0;j<size_y;j++){
             for (int i=0;i<size_x;i++){
                 if(levelMap[j,i]!=3)continue;
-                map_object=Inside_Corner;
+                mapObject=Inside_Corner;
                 neighbor = new int[3]{3,4,7};
 
                 int l_r=-1;
@@ -432,119 +432,119 @@ public class Level_Generator : MonoBehaviour
                     }
                 }
                 if(l_r==1&&t_b==4){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);}
                 else if(l_r==0&&t_b==4){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);}
                 else if(l_r==0&&t_b==3){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);}
                 else if(l_r==1&&t_b==3){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);}
 
 
 
                 else if(i<size_x-1&&j<size_y-1&&neighbor.Contains(levelMap[j,i+1])&&neighbor.Contains(levelMap[j+1,i])){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                 }
                 else if(i>0&&j<size_y-1&&neighbor.Contains(levelMap[j,i-1])&&neighbor.Contains(levelMap[j+1,i])){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
                 else if(i>0&&j>0&&neighbor.Contains(levelMap[j,i-1])&&neighbor.Contains(levelMap[j-1,i])){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
                 }
                 else if(i<size_x-1&&j>0&&neighbor.Contains(levelMap[j,i+1])&&neighbor.Contains(levelMap[j-1,i])){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                 }
                 else if((i==size_x-1&&j<size_y-1&&neighbor.Contains(levelMap[j+1,i]))||(i<size_x-1&&j==size_y-1&&neighbor.Contains(levelMap[j,i+1]))||(i==size_x-1&&j==size_y-1)){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                 }
                 else if((i==0&&j<size_y-1&&neighbor.Contains(levelMap[j+1,i]))||(i>0&&j==size_y-1&&neighbor.Contains(levelMap[j,i-1]))||(i==0&&j==size_y-1)){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
                 else if((i==0&&j>0&&neighbor.Contains(levelMap[j-1,i]))||(i>0&&j==0&&neighbor.Contains(levelMap[j,i-1]))||(i==0&&j==0)){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
                 }
                 else if((i==size_x-1&&j>0&&neighbor.Contains(levelMap[j-1,i]))||(i<size_x-1&&j==0&&neighbor.Contains(levelMap[j,i+1]))||(i==size_x-1&&j==0)){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                 }
             }
@@ -553,7 +553,7 @@ public class Level_Generator : MonoBehaviour
         for(int j=0;j<size_y;j++){
             for (int i=0;i<size_x;i++){
                 if(levelMap[j,i]!=1)continue;
-                map_object=Outside_Corner;
+                mapObject=Outside_Corner;
                 neighbor = new int[3]{1,2,7};
 
                 int l_r=-1;
@@ -565,119 +565,119 @@ public class Level_Generator : MonoBehaviour
                     }
                 }
                 if(l_r==1&&t_b==4){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);}
                 else if(l_r==0&&t_b==4){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);}
                 else if(l_r==0&&t_b==3){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);}
                 else if(l_r==1&&t_b==3){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);}
 
 
 
                 else if(i<size_x-1&&j<size_y-1&&neighbor.Contains(levelMap[j,i+1])&&neighbor.Contains(levelMap[j+1,i])){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                 }
                 else if(i>0&&j<size_y-1&&neighbor.Contains(levelMap[j,i-1])&&neighbor.Contains(levelMap[j+1,i])){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
                 else if(i>0&&j>0&&neighbor.Contains(levelMap[j,i-1])&&neighbor.Contains(levelMap[j-1,i])){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
                 }
                 else if(i<size_x-1&&j>0&&neighbor.Contains(levelMap[j,i+1])&&neighbor.Contains(levelMap[j-1,i])){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                 }
                 else if((i==size_x-1&&j<size_y-1&&neighbor.Contains(levelMap[j+1,i]))||(i<size_x-1&&j==size_y-1&&neighbor.Contains(levelMap[j,i+1]))||(i==size_x-1&&j==size_y-1)){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                 }
                 else if((i==0&&j<size_y-1&&neighbor.Contains(levelMap[j+1,i]))||(i>0&&j==size_y-1&&neighbor.Contains(levelMap[j,i-1]))||(i==0&&j==size_y-1)){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
                 else if((i==0&&j>0&&neighbor.Contains(levelMap[j-1,i]))||(i>0&&j==0&&neighbor.Contains(levelMap[j,i-1]))||(i==0&&j==0)){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
                 }
                 else if((i==size_x-1&&j>0&&neighbor.Contains(levelMap[j-1,i]))||(i<size_x-1&&j==0&&neighbor.Contains(levelMap[j,i+1]))||(i==size_x-1&&j==0)){
-                    left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
-                    right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
-                    left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
                     left_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
-                    right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                 }
             }
