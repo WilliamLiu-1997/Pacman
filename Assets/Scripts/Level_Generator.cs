@@ -23,6 +23,7 @@ public class Level_Generator : MonoBehaviour
         {0,0,0,0,0,0,5,0,0,0,4,0,0,0}, 
     }; 
     public Camera Camera;
+    public GameObject Life;
     public GameObject Pellet;
     public GameObject Power_Pellet;
     public GameObject Bonus_Pellet;
@@ -57,6 +58,12 @@ public class Level_Generator : MonoBehaviour
         size_x=levelMap.GetLength(1);
         size_y=levelMap.GetLength(0);
         Camera.orthographicSize =size_x>size_y?size_x+2:size_y+2;
+        GameObject life1=Instantiate(Life,new Vector3(-size_x+1,-size_y,0), Quaternion.identity);
+        GameObject life2=Instantiate(Life,new Vector3(-size_x+3,-size_y,0), Quaternion.identity);
+        GameObject life3=Instantiate(Life,new Vector3(-size_x+5,-size_y,0), Quaternion.identity);
+        GameObject bonus=Instantiate(Bonus_Pellet,new Vector3(size_x-1.5f,-size_y,0), Quaternion.identity);
+        bonus.transform.localScale=new Vector3(2f,2f,2f);
+
         for(int j=0;j<size_y;j++){
             for (int i=0;i<size_x;i++){
                 switch (levelMap[j,i]){
@@ -355,8 +362,18 @@ public class Level_Generator : MonoBehaviour
                         }
                         break;
                     case 5:
+                        Instantiate(Pellet,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        Instantiate(Pellet,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                        if(j!=size_y-1){
+                        Instantiate(Pellet,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                        Instantiate(Pellet,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);}
                         break;
                     case 6:
+                        Instantiate(Power_Pellet,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        Instantiate(Power_Pellet,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                        if(j!=size_y-1){
+                        Instantiate(Power_Pellet,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                        Instantiate(Power_Pellet,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);}
                         break;
                     case 7:
                         mapObject=Junction;
