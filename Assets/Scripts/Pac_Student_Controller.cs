@@ -9,6 +9,10 @@ public class Pac_Student_Controller : MonoBehaviour
     private Tweener tweener;
     private int[] Map_Size;
     private Level_Generator[] LevelGenerator;
+<<<<<<< HEAD
+=======
+    
+>>>>>>> Feature-Visual
     // Start is called before the first frame update
     void Start()
     {
