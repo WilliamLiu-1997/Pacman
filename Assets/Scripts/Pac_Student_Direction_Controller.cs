@@ -15,26 +15,26 @@ public class Pac_Student_Direction_Controller : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.UpArrow)){
-            ResetTrigger();
-            Pac_Animator.SetTrigger("Up");
-        }
-        if(Input.GetKeyDown(KeyCode.DownArrow)){
-            ResetTrigger();
-            Pac_Animator.SetTrigger("Down");
-        }
-        if(Input.GetKeyDown(KeyCode.LeftArrow)){
-            ResetTrigger();
-            Pac_Animator.SetTrigger("Left");
-        }
-        if(Input.GetKeyDown(KeyCode.RightArrow)){
-            ResetTrigger();
-            Pac_Animator.SetTrigger("Right");
-        }
-        if(Input.GetKeyDown(KeyCode.Space)){
-            ResetTrigger();
-            Pac_Animator.SetTrigger("Die");
-        }
+        // if(Input.GetKeyDown(KeyCode.UpArrow)){
+        //     ResetTrigger();
+        //     Pac_Animator.SetTrigger("Up");
+        // }
+        // if(Input.GetKeyDown(KeyCode.DownArrow)){
+        //     ResetTrigger();
+        //     Pac_Animator.SetTrigger("Down");
+        // }
+        // if(Input.GetKeyDown(KeyCode.LeftArrow)){
+        //     ResetTrigger();
+        //     Pac_Animator.SetTrigger("Left");
+        // }
+        // if(Input.GetKeyDown(KeyCode.RightArrow)){
+        //     ResetTrigger();
+        //     Pac_Animator.SetTrigger("Right");
+        // }
+        // if(Input.GetKeyDown(KeyCode.Space)){
+        //     ResetTrigger();
+        //     Pac_Animator.SetTrigger("Die");
+        // }
     }
 
     public void ResetTrigger(){

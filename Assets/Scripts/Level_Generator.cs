@@ -21,7 +21,7 @@ public class Level_Generator : MonoBehaviour
         {0,0,0,0,0,2,5,4,4,0,3,4,4,0}, 
         {2,2,2,2,2,1,5,3,3,0,4,0,0,0}, 
         {0,0,0,0,0,0,5,0,0,0,4,0,0,0}, 
-        }; 
+    }; 
     public GameObject Pac_student;
     public GameObject Blue_Ghost;
     public GameObject Gree_Ghost;
@@ -39,9 +39,12 @@ public class Level_Generator : MonoBehaviour
     private int size_y;
     private ArrayList Pellet_Positions=new ArrayList();
     private ArrayList Power_Pellet_Positions=new ArrayList();
+
+    public GameObject Pac_student_Show_Die_Animation;
     // Start is called before the first frame update
     void Start()
     {
+        Pac_student_Show_Die_Animation=GameObject.Find("Pac_Student(Show Die Animation)");
         ArrayList inside_corner_info=new ArrayList();
         ArrayList outside_corner_info=new ArrayList();
         GameObject left_top;
@@ -54,6 +57,8 @@ public class Level_Generator : MonoBehaviour
         int[] neighbor2;
         size_x=levelMap.GetLength(1);
         size_y=levelMap.GetLength(0);
+        Pac_student=Instantiate(Pac_student,new Vector3(-size_x+1,size_y-2,0), Quaternion.identity);
+        Pac_student.name="Pac Student";
         for(int j=0;j<size_y;j++){
             for (int i=0;i<size_x;i++){
                 switch (levelMap[j,i]){
@@ -687,6 +692,8 @@ public class Level_Generator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        Pac_student_Show_Die_Animation.GetComponent<Animator>().SetTrigger("Start");
+        Pac_student_Show_Die_Animation.GetComponent<Animator>().SetTrigger("Die");
+        Pac_student_Show_Die_Animation.GetComponent<Animator>().SetTrigger("Exit");
     }
 }
