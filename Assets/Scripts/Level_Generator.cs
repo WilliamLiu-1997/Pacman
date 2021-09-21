@@ -50,6 +50,8 @@ public class Level_Generator : MonoBehaviour
         GameObject right_bottom;
         GameObject map_object;
         int[] neighbor;
+        int[] neighbor1;
+        int[] neighbor2;
         size_x=levelMap.GetLength(1);
         size_y=levelMap.GetLength(0);
         for(int j=0;j<size_y;j++){
@@ -354,6 +356,59 @@ public class Level_Generator : MonoBehaviour
                     case 6:
                         break;
                     case 7:
+                        map_object=Junction;
+                        neighbor1 = new int[2]{1,2};
+                        neighbor2 = new int[2]{3,4};
+                        if(i<size_x-1&&j<size_y-1&&((neighbor1.Contains(levelMap[j,i+1])&&neighbor2.Contains(levelMap[j+1,i]))||(neighbor2.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j+1,i])))){
+                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            if(neighbor1.Contains(levelMap[j,i+1])&&neighbor2.Contains(levelMap[j+1,i]))left_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
+                            if(neighbor2.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j+1,i]))left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
+                            right_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
+                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
+                            left_bottom.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
+                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
+                            right_bottom.transform.localScale=new Vector3(-left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
+                        }
+                        else if(i>0&&j<size_y-1&&((neighbor1.Contains(levelMap[j,i-1])&&neighbor2.Contains(levelMap[j+1,i]))||(neighbor2.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j+1,i])))){
+                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            if(neighbor1.Contains(levelMap[j,i-1])&&neighbor2.Contains(levelMap[j+1,i])){};
+                            if(neighbor2.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j+1,i])){
+                                left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+                                left_top.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
+                                }
+                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
+                            right_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
+                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
+                            left_bottom.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
+                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
+                            right_bottom.transform.localScale=new Vector3(-left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
+                        }
+                        else if(i>0&&j>0&&((neighbor1.Contains(levelMap[j,i-1])&&neighbor2.Contains(levelMap[j-1,i]))||(neighbor2.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j-1,i])))){
+                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            if(neighbor1.Contains(levelMap[j,i-1])&&neighbor2.Contains(levelMap[j-1,i]))left_top.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
+                            if(neighbor2.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j-1,i]))left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
+                            right_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
+                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
+                            left_bottom.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
+                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
+                            right_bottom.transform.localScale=new Vector3(-left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
+                        }
+                        else if(i<size_x-1&&j>0&&((neighbor1.Contains(levelMap[j,i+1])&&neighbor2.Contains(levelMap[j-1,i]))||(neighbor2.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j-1,i])))){
+                            left_top=Instantiate(map_object,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            if(neighbor1.Contains(levelMap[j,i+1])&&neighbor2.Contains(levelMap[j-1,i]))left_top.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
+                            if(neighbor2.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j-1,i])){
+                                left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+                                left_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
+                                }
+                            right_top=Instantiate(map_object,new Vector3(size_x-i-1,size_y-j-1,0), left_top.transform.rotation);
+                            right_top.transform.localScale=new Vector3(-left_top.transform.localScale.x,left_top.transform.localScale.y,left_top.transform.localScale.z);
+                            left_bottom=Instantiate(map_object,new Vector3(i-size_x,j-size_y+1,0), left_top.transform.rotation);
+                            left_bottom.transform.localScale=new Vector3(left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
+                            right_bottom=Instantiate(map_object,new Vector3(size_x-i-1,j-size_y+1,0), left_top.transform.rotation);
+                            right_bottom.transform.localScale=new Vector3(-left_top.transform.localScale.x,-left_top.transform.localScale.y,left_top.transform.localScale.z);
+                        }
                         break;
                 }
             }
