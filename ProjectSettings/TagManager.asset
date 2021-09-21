@@ -3,7 +3,15 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Pac Student
+  - Blue Ghost
+  - Green Ghost
+  - Pink Ghost
+  - Red Ghost
+  - Bonus Pellet
+  - Pellet
+  - Power Pellet
   layers:
   - Default
   - TransparentFX
