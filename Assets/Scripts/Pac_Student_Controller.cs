@@ -5,10 +5,12 @@ using UnityEngine;
 public class Pac_Student_Controller : MonoBehaviour
 {
     Animator Pac_Animator;
-    public AudioSource Moving;
+    public AudioSource Moving_Sound;
     private Tweener tweener;
     private int[] Map_Size;
     private Level_Generator[] LevelGenerator;
+    private bool Moving;
+    private AudioSource background_Music;
     
     // Start is called before the first frame update
     void Start()
@@ -18,32 +20,40 @@ public class Pac_Student_Controller : MonoBehaviour
         Map_Size=LevelGenerator[0].Get_Size();
         gameObject.transform.position=new Vector3(-Map_Size[0]+1,Map_Size[1]-2,0);
         tweener=GetComponent<Tweener>();
-        Moving=GetComponent<AudioSource>();
-        Moving.Play();
+        Moving_Sound=GetComponent<AudioSource>();
+        background_Music=GameObject.Find("Intro Music").GetComponent<AudioSource>();
+        background_Music.Play();
+        Moving=false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.transform.position.y==Map_Size[1]-2&&gameObject.transform.position.x<-Map_Size[0]+6){
-            ResetTrigger();
-            Pac_Animator.SetTrigger("Right");
-            tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x+1,gameObject.transform.position.y,gameObject.transform.position.z),0.2f);
+        if(Time.time>background_Music.clip.length&&!Moving){
+            Moving=true;
+            Moving_Sound.Play();
         }
-        if(gameObject.transform.position.y==Map_Size[1]-6&&gameObject.transform.position.x>-Map_Size[0]+1){
-            ResetTrigger();
-            Pac_Animator.SetTrigger("Left");
-            tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x-1,gameObject.transform.position.y,gameObject.transform.position.z),0.2f);
-        }
-        if(gameObject.transform.position.x==-Map_Size[0]+1&&gameObject.transform.position.y<Map_Size[1]-2){
-            ResetTrigger();
-            Pac_Animator.SetTrigger("Up");
-            tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x,gameObject.transform.position.y+1,gameObject.transform.position.z),0.2f);
-        }
-        if(gameObject.transform.position.x==-Map_Size[0]+6&&gameObject.transform.position.y>Map_Size[1]-6){
-            ResetTrigger();
-            Pac_Animator.SetTrigger("Down");
-            tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x,gameObject.transform.position.y-1,gameObject.transform.position.z),0.2f);
+        if(Moving){
+            if(gameObject.transform.position.y==Map_Size[1]-2&&gameObject.transform.position.x<-Map_Size[0]+6){
+                ResetTrigger();
+                Pac_Animator.SetTrigger("Right");
+                tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x+1,gameObject.transform.position.y,gameObject.transform.position.z),0.2f);
+            }
+            if(gameObject.transform.position.y==Map_Size[1]-6&&gameObject.transform.position.x>-Map_Size[0]+1){
+                ResetTrigger();
+                Pac_Animator.SetTrigger("Left");
+                tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x-1,gameObject.transform.position.y,gameObject.transform.position.z),0.2f);
+            }
+            if(gameObject.transform.position.x==-Map_Size[0]+1&&gameObject.transform.position.y<Map_Size[1]-2){
+                ResetTrigger();
+                Pac_Animator.SetTrigger("Up");
+                tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x,gameObject.transform.position.y+1,gameObject.transform.position.z),0.2f);
+            }
+            if(gameObject.transform.position.x==-Map_Size[0]+6&&gameObject.transform.position.y>Map_Size[1]-6){
+                ResetTrigger();
+                Pac_Animator.SetTrigger("Down");
+                tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x,gameObject.transform.position.y-1,gameObject.transform.position.z),0.2f);
+            }
         }
         // if(Input.GetKeyDown(KeyCode.UpArrow)){
         //     ResetTrigger();
@@ -73,6 +83,5 @@ public class Pac_Student_Controller : MonoBehaviour
             Pac_Animator.ResetTrigger("Left");
             Pac_Animator.ResetTrigger("Right");
             Pac_Animator.ResetTrigger("Die");
-        
     }
 }
