@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Level_Generator : MonoBehaviour
 {
-    private int[,] levelMap={ 
+    private int[,] levelMap={
         {1,2,2,2,2,2,2,2,2,2,2,2,2,7}, 
         {2,5,5,5,5,5,5,5,5,5,5,5,5,4}, 
         {2,5,3,4,4,3,5,3,4,4,4,3,5,4}, 
@@ -439,6 +439,7 @@ public class Level_Generator : MonoBehaviour
                 if(levelMap[j,i]!=3)continue;
                 mapObject=Inside_Corner;
                 neighbor = new int[3]{3,4,7};
+                neighbor1 = new int[2]{3,7};
 
                 int l_r=-1;
                 int t_b=-1;
@@ -486,7 +487,45 @@ public class Level_Generator : MonoBehaviour
 
 
 
-                else if(i<size_x-1&&j<size_y-1&&neighbor.Contains(levelMap[j,i+1])&&neighbor.Contains(levelMap[j+1,i])){
+                else if((l_r==1&&j<size_y-1&&neighbor1.Contains(levelMap[j+1,i]))||(t_b==4&&i<size_x-1&&neighbor1.Contains(levelMap[j,i+1]))){
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);}
+                else if((l_r==0&&j<size_y-1&&neighbor1.Contains(levelMap[j+1,i]))||(t_b==4&&i>0&&neighbor1.Contains(levelMap[j,i-1]))){
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);}
+                else if((l_r==0&&j>0&&neighbor1.Contains(levelMap[j-1,i]))||(t_b==3&&i>0&&neighbor1.Contains(levelMap[j,i-1]))){
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);}
+                else if((l_r==1&&j>0&&neighbor1.Contains(levelMap[j-1,i]))||(t_b==3&&i<size_x-1&&neighbor1.Contains(levelMap[j,i+1]))){
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);}
+
+                
+
+                else if(i<size_x-1&&j<size_y-1&&neighbor1.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j+1,i])){
                     left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
@@ -495,7 +534,7 @@ public class Level_Generator : MonoBehaviour
                     right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                 }
-                else if(i>0&&j<size_y-1&&neighbor.Contains(levelMap[j,i-1])&&neighbor.Contains(levelMap[j+1,i])){
+                else if(i>0&&j<size_y-1&&neighbor1.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j+1,i])){
                     left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                     right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
@@ -505,7 +544,7 @@ public class Level_Generator : MonoBehaviour
                     right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
-                else if(i>0&&j>0&&neighbor.Contains(levelMap[j,i-1])&&neighbor.Contains(levelMap[j-1,i])){
+                else if(i>0&&j>0&&neighbor1.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j-1,i])){
                     left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                     right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
@@ -515,7 +554,7 @@ public class Level_Generator : MonoBehaviour
                     right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
                 }
-                else if(i<size_x-1&&j>0&&neighbor.Contains(levelMap[j,i+1])&&neighbor.Contains(levelMap[j-1,i])){
+                else if(i<size_x-1&&j>0&&neighbor1.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j-1,i])){
                     left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                     right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
@@ -572,6 +611,7 @@ public class Level_Generator : MonoBehaviour
                 if(levelMap[j,i]!=1)continue;
                 mapObject=Outside_Corner;
                 neighbor = new int[3]{1,2,7};
+                neighbor1 = new int[2]{1,7};
 
                 int l_r=-1;
                 int t_b=-1;
@@ -619,7 +659,45 @@ public class Level_Generator : MonoBehaviour
 
 
 
-                else if(i<size_x-1&&j<size_y-1&&neighbor.Contains(levelMap[j,i+1])&&neighbor.Contains(levelMap[j+1,i])){
+                else if((l_r==1&&j<size_y-1&&neighbor1.Contains(levelMap[j+1,i]))||(t_b==4&&i<size_x-1&&neighbor1.Contains(levelMap[j,i+1]))){
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);}
+                else if((l_r==0&&j<size_y-1&&neighbor1.Contains(levelMap[j+1,i]))||(t_b==4&&i>0&&neighbor1.Contains(levelMap[j,i-1]))){
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);}
+                else if((l_r==0&&j>0&&neighbor1.Contains(levelMap[j-1,i]))||(t_b==3&&i>0&&neighbor1.Contains(levelMap[j,i-1]))){
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);}
+                else if((l_r==1&&j>0&&neighbor1.Contains(levelMap[j-1,i]))||(t_b==3&&i<size_x-1&&neighbor1.Contains(levelMap[j,i+1]))){
+                    left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
+                    right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                    right_top.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
+                    left_bottom=Instantiate(mapObject,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
+                    left_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
+                    right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                    right_bottom.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);}
+
+
+
+                else if(i<size_x-1&&j<size_y-1&&neighbor1.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j+1,i])){
                     left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
                     right_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
@@ -628,7 +706,7 @@ public class Level_Generator : MonoBehaviour
                     right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                 }
-                else if(i>0&&j<size_y-1&&neighbor.Contains(levelMap[j,i-1])&&neighbor.Contains(levelMap[j+1,i])){
+                else if(i>0&&j<size_y-1&&neighbor1.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j+1,i])){
                     left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                     right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
@@ -638,7 +716,7 @@ public class Level_Generator : MonoBehaviour
                     right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
-                else if(i>0&&j>0&&neighbor.Contains(levelMap[j,i-1])&&neighbor.Contains(levelMap[j-1,i])){
+                else if(i>0&&j>0&&neighbor1.Contains(levelMap[j,i-1])&&neighbor1.Contains(levelMap[j-1,i])){
                     left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                     right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
@@ -648,7 +726,7 @@ public class Level_Generator : MonoBehaviour
                     right_bottom=Instantiate(mapObject,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
                     right_bottom.transform.Rotate(0.0f, 0.0f, 0.0f, Space.Self);
                 }
-                else if(i<size_x-1&&j>0&&neighbor.Contains(levelMap[j,i+1])&&neighbor.Contains(levelMap[j-1,i])){
+                else if(i<size_x-1&&j>0&&neighbor1.Contains(levelMap[j,i+1])&&neighbor1.Contains(levelMap[j-1,i])){
                     left_top=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
                     left_top.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                     right_top=Instantiate(mapObject,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);

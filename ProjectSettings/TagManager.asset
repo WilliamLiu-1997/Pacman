@@ -12,6 +12,7 @@ TagManager:
   - Bonus Pellet
   - Pellet
   - Power Pellet
+  - Intro Music
   layers:
   - Default
   - TransparentFX
