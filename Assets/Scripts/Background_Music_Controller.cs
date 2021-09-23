@@ -14,18 +14,16 @@ public class Background_Music_Controller : MonoBehaviour
 
     public AudioClip dieClip;
 
-    public AudioSource audio;
+    AudioSource my_Audio;
 
-    private bool intro_done = false;
 
     // Start is called before the first frame update
     IEnumerator Start()
     {
-        audio = GetComponent<AudioSource>();
-        audio.clip = backgroundClip;
-        audio.Play();
-        yield return new WaitForSeconds(audio.clip.length);
-        intro_done = true;
+        my_Audio=GetComponent<AudioSource>();
+        my_Audio.clip = backgroundClip;
+        my_Audio.Play();
+        yield return new WaitForSeconds(my_Audio.clip.length);
         playNormalGhost();
     }
 
@@ -34,43 +32,39 @@ public class Background_Music_Controller : MonoBehaviour
     {
     }
 
+    public float playStart(){
+        my_Audio.clip = backgroundClip;
+        my_Audio.loop = false;
+        my_Audio.Play();
+        return (float)my_Audio.clip.length;
+    }
+
     public void playNormalGhost()
     {
-        if (intro_done)
-        {
-            audio.clip = normalGhostClip;
-            audio.loop = true;
-            audio.Play();
-        }
+        my_Audio.clip = normalGhostClip;
+        my_Audio.loop = true;
+        my_Audio.Play();
     }
 
     public void playScaredGhost()
     {
-        if (intro_done)
-        {
-            audio.clip = scaredGhostClip;
-            audio.loop = true;
-            audio.Play();
-        }
+        my_Audio.clip = scaredGhostClip;
+        my_Audio.loop = true;
+        my_Audio.Play();
     }
 
     public void playDeadGhost()
     {
-        if (intro_done)
-        {
-            audio.clip = deadGhostClip;
-            audio.loop = true;
-            audio.Play();
-        }
+        my_Audio.clip = deadGhostClip;
+        my_Audio.loop = true;
+        my_Audio.Play();
     }
 
-    public void playDie()
+    public float playDie()
     {
-        if (intro_done)
-        {
-            audio.clip = dieClip;
-            audio.loop = false;
-            audio.Play();
-        }
+        my_Audio.clip = dieClip;
+        my_Audio.loop = false;
+        my_Audio.Play();
+        return (float)my_Audio.clip.length;
     }
 }
