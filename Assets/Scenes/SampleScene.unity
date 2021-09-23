@@ -752,7 +752,6 @@ MonoBehaviour:
   scaredGhostClip: {fileID: 8300000, guid: 038456ccd98075743831da18b3ca344b, type: 3}
   deadGhostClip: {fileID: 8300000, guid: f7018bfafd814e54e87ff7dc2020fc72, type: 3}
   dieClip: {fileID: 8300000, guid: 3fa6fbe687c63b64aaf2fd1ad5a52ae4, type: 3}
-  audio: {fileID: 1632363242}
 --- !u!1 &2103245039
 GameObject:
   m_ObjectHideFlags: 0
