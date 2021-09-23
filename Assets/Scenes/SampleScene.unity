@@ -518,8 +518,8 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a6a7280c3af553642a0d3ccc7fa3d5c1, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.15
-  m_Pitch: 1.35
+  m_Volume: 0.2
+  m_Pitch: 1.5
   Loop: 1
   Mute: 0
   Spatialize: 0
@@ -617,8 +617,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1632363243}
   - component: {fileID: 1632363242}
+  - component: {fileID: 1632363244}
   m_Layer: 0
-  m_Name: Intro Music
+  m_Name: Background Music
   m_TagString: Intro Music
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -734,6 +735,24 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1632363244
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1632363241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ca720adcc4c8eb4cb719b97e91f9232, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  backgroundClip: {fileID: 8300000, guid: db93a553dae5d13458bd4c1d972fc7cf, type: 3}
+  normalGhostClip: {fileID: 8300000, guid: c51f502240365fc4581e8f9ab105042c, type: 3}
+  scaredGhostClip: {fileID: 8300000, guid: 038456ccd98075743831da18b3ca344b, type: 3}
+  deadGhostClip: {fileID: 8300000, guid: f7018bfafd814e54e87ff7dc2020fc72, type: 3}
+  dieClip: {fileID: 8300000, guid: 3fa6fbe687c63b64aaf2fd1ad5a52ae4, type: 3}
+  audio: {fileID: 1632363242}
 --- !u!1 &2103245039
 GameObject:
   m_ObjectHideFlags: 0
