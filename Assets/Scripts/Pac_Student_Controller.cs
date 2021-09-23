@@ -10,7 +10,6 @@ public class Pac_Student_Controller : MonoBehaviour
     private int[] Map_Size;
     private Level_Generator[] LevelGenerator;
     private bool Moving;
-    private AudioSource background_Music;
     
     // Start is called before the first frame update
     void Start()
@@ -21,15 +20,13 @@ public class Pac_Student_Controller : MonoBehaviour
         gameObject.transform.position=new Vector3(-Map_Size[0]+1,Map_Size[1]-2,0);
         tweener=GetComponent<Tweener>();
         Moving_Sound=GetComponent<AudioSource>();
-        background_Music=GameObject.Find("Intro Music").GetComponent<AudioSource>();
-        background_Music.Play();
         Moving=false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(Time.time>background_Music.clip.length&&!Moving){
+        if(!Moving){
             Moving=true;
             Moving_Sound.Play();
         }
