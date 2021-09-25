@@ -22,6 +22,7 @@ public class Level_Generator : MonoBehaviour
         {2,2,2,2,2,1,5,3,3,0,4,0,0,0}, 
         {0,0,0,0,0,0,5,0,0,0,4,0,0,0}, 
     }; 
+    private int[,] map_list;
     public Camera Camera;
     public GameObject Life;
     public GameObject Pellet;
@@ -34,8 +35,6 @@ public class Level_Generator : MonoBehaviour
     public GameObject Junction;
     private int size_x;
     private int size_y;
-    private int size_X;
-    private int size_Y;
     private ArrayList Pellet_Positions=new ArrayList();
     private ArrayList Power_Pellet_Positions=new ArrayList();
 
@@ -48,7 +47,7 @@ public class Level_Generator : MonoBehaviour
     {
         size_x=levelMap.GetLength(1);
         size_y=levelMap.GetLength(0);
-        int[,] map_list=new int[levelMap.GetLength(0)*2-1,levelMap.GetLength(1)*2];
+        map_list=new int[levelMap.GetLength(0)*2-1,levelMap.GetLength(1)*2];
         for(int j=0;j<size_y;j++){
             for (int i=0;i<size_x;i++){
                 map_list[j,i]=levelMap[j,i];
@@ -57,8 +56,8 @@ public class Level_Generator : MonoBehaviour
                 map_list[size_y*2-2-j,size_x*2-i-1]=levelMap[j,i];
             }
         }
-        size_X=map_list.GetLength(1);
-        size_Y=map_list.GetLength(0);
+        int size_X=map_list.GetLength(1);
+        int size_Y=map_list.GetLength(0);
         Pac_student_Show_Die_Animation=GameObject.Find("Pac_Student(Show Die Animation)");
         ArrayList inside_corner_info=new ArrayList();
         ArrayList outside_corner_info=new ArrayList();
@@ -829,5 +828,9 @@ public class Level_Generator : MonoBehaviour
 
     public int[] Get_Size(){
         return new int[2]{levelMap.GetLength(1),levelMap.GetLength(0)};
+    }
+
+    public int[,] Get_Map(){
+        return map_list;
     }
 }
