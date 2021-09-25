@@ -67,10 +67,10 @@ public class Level_Generator : MonoBehaviour
         int[] neighbor1;
         int[] neighbor2;
         Camera.orthographicSize =size_x>size_y?size_x+2:size_y+2;
-        GameObject life1=Instantiate(Life,new Vector3(-size_x+1,-size_y,0), Quaternion.identity);
-        GameObject life2=Instantiate(Life,new Vector3(-size_x+3,-size_y,0), Quaternion.identity);
-        GameObject life3=Instantiate(Life,new Vector3(-size_x+5,-size_y,0), Quaternion.identity);
-        GameObject bonus=Instantiate(Bonus_Pellet,new Vector3(size_x-1.5f,-size_y,0), Quaternion.identity);
+        GameObject life1=Instantiate(Life,new Vector3(-size_x+1,-size_y,0), Quaternion.identity,GameObject.Find("Indictors").transform);
+        GameObject life2=Instantiate(Life,new Vector3(-size_x+3,-size_y,0), Quaternion.identity,GameObject.Find("Indictors").transform);
+        GameObject life3=Instantiate(Life,new Vector3(-size_x+5,-size_y,0), Quaternion.identity,GameObject.Find("Indictors").transform);
+        GameObject bonus=Instantiate(Bonus_Pellet,new Vector3(size_x-1.5f,-size_y,0), Quaternion.identity,GameObject.Find("Indictors").transform);
         bonus.transform.localScale=new Vector3(2f,2f,2f);
 
         for(int j=0;j<size_Y;j++){
@@ -84,7 +84,7 @@ public class Level_Generator : MonoBehaviour
                         mapObject=Outside_Wall;
                         neighbor = new int[3]{1,2,7};
                         if((i<size_X-1&&neighbor.Contains(map_list[j,i+1]))&&(i>0&&neighbor.Contains(map_list[j,i-1]))){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             if(map_list[j,i+1]==1){
                                 outside_corner_info.Add(j);
                                 outside_corner_info.Add(i+1);
@@ -97,7 +97,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if((j<size_Y-1&&neighbor.Contains(map_list[j+1,i]))&&(j>0&&neighbor.Contains(map_list[j-1,i]))){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(map_list[j+1,i]==1){
                                 outside_corner_info.Add(j+1);
@@ -113,7 +113,7 @@ public class Level_Generator : MonoBehaviour
 
 
                         else if(i==size_X-1){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             if(map_list[j,i-1]==1){
                                 outside_corner_info.Add(j);
                                 outside_corner_info.Add(i-1);
@@ -121,7 +121,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i==0){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             if(map_list[j,i+1]==1){
                                 outside_corner_info.Add(j);
                                 outside_corner_info.Add(i+1);
@@ -129,7 +129,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j==size_Y-1){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(map_list[j-1,i]==1){
                                 outside_corner_info.Add(j-1);
@@ -138,7 +138,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j==0){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(map_list[j+1,i]==1){
                                 outside_corner_info.Add(j+1);
@@ -149,7 +149,7 @@ public class Level_Generator : MonoBehaviour
 
 
                         else if(i>0&&neighbor.Contains(map_list[j,i-1])){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             if(map_list[j,i-1]==1){
                                 outside_corner_info.Add(j);
                                 outside_corner_info.Add(i-1);
@@ -157,7 +157,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i<size_X-1&&neighbor.Contains(map_list[j,i+1])){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             if(map_list[j,i+1]==1){
                                 outside_corner_info.Add(j);
                                 outside_corner_info.Add(i+1);
@@ -165,7 +165,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j>0&&neighbor.Contains(map_list[j-1,i])){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(map_list[j-1,i]==1){
                                 outside_corner_info.Add(j-1);
@@ -174,7 +174,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j<size_Y-1&&neighbor.Contains(map_list[j+1,i])){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(map_list[j+1,i]==1){
                                 outside_corner_info.Add(j+1);
@@ -189,7 +189,7 @@ public class Level_Generator : MonoBehaviour
                         mapObject=Inside_Wall;
                         neighbor = new int[3]{3,4,7};
                         if((i<size_X-1&&neighbor.Contains(map_list[j,i+1]))&&(i>0&&neighbor.Contains(map_list[j,i-1]))){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             if(map_list[j,i+1]==3){
                                 inside_corner_info.Add(j);
                                 inside_corner_info.Add(i+1);
@@ -202,7 +202,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if((j<size_Y-1&&neighbor.Contains(map_list[j+1,i]))&&(j>0&&neighbor.Contains(map_list[j-1,i]))){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(map_list[j+1,i]==3){
                                 inside_corner_info.Add(j+1);
@@ -218,7 +218,7 @@ public class Level_Generator : MonoBehaviour
 
 
                         else if(i==size_X-1){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             if(map_list[j,i-1]==3){
                                 inside_corner_info.Add(j);
                                 inside_corner_info.Add(i-1);
@@ -226,7 +226,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i==0){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             if(map_list[j,i+1]==3){
                                 inside_corner_info.Add(j);
                                 inside_corner_info.Add(i+1);
@@ -234,7 +234,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j==size_Y-1){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(map_list[j-1,i]==3){
                                 inside_corner_info.Add(j-1);
@@ -243,7 +243,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j==0){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(map_list[j+1,i]==3){
                                 inside_corner_info.Add(j+1);
@@ -254,7 +254,7 @@ public class Level_Generator : MonoBehaviour
 
 
                         else if(i>0&&neighbor.Contains(map_list[j,i-1])){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             if(map_list[j,i-1]==3){
                                 inside_corner_info.Add(j);
                                 inside_corner_info.Add(i-1);
@@ -262,7 +262,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(i<size_X-1&&neighbor.Contains(map_list[j,i+1])){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             if(map_list[j,i+1]==3){
                                 inside_corner_info.Add(j);
                                 inside_corner_info.Add(i+1);
@@ -270,7 +270,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j>0&&neighbor.Contains(map_list[j-1,i])){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(map_list[j-1,i]==3){
                                 inside_corner_info.Add(j-1);
@@ -279,7 +279,7 @@ public class Level_Generator : MonoBehaviour
                             }
                         }
                         else if(j<size_Y-1&&neighbor.Contains(map_list[j+1,i])){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                             if(map_list[j+1,i]==3){
                                 inside_corner_info.Add(j+1);
@@ -289,19 +289,19 @@ public class Level_Generator : MonoBehaviour
                         }
                         break;
                     case 5:
-                        Instantiate(Pellet,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                        Instantiate(Pellet,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                        Instantiate(Pellet,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Pellets").transform);
+                        Instantiate(Pellet,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity,GameObject.Find("Pellets").transform);
                         if(j!=size_y-1){
-                        Instantiate(Pellet,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                        Instantiate(Pellet,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                        Instantiate(Pellet,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity,GameObject.Find("Pellets").transform);
+                        Instantiate(Pellet,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity,GameObject.Find("Pellets").transform);
                         }
                         break;
                     case 6:
-                        Instantiate(Power_Pellet,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
-                        Instantiate(Power_Pellet,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity);
+                        Instantiate(Power_Pellet,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("PowerPellets").transform);
+                        Instantiate(Power_Pellet,new Vector3(size_x-i-1,size_y-j-1,0), Quaternion.identity,GameObject.Find("PowerPellets").transform);
                         if(j!=size_y-1){
-                        Instantiate(Power_Pellet,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity);
-                        Instantiate(Power_Pellet,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity);
+                        Instantiate(Power_Pellet,new Vector3(i-size_x,j-size_y+1,0), Quaternion.identity,GameObject.Find("PowerPellets").transform);
+                        Instantiate(Power_Pellet,new Vector3(size_x-i-1,j-size_y+1,0), Quaternion.identity,GameObject.Find("PowerPellets").transform);
                         }
                         break;
                     case 7:
@@ -310,42 +310,42 @@ public class Level_Generator : MonoBehaviour
                         neighbor2 = new int[2]{3,4};
                         if(i<size_X-1&&j<size_Y-1&&((neighbor1.Contains(map_list[j,i+1])&&neighbor2.Contains(map_list[j+1,i]))||(neighbor2.Contains(map_list[j,i+1])&&neighbor1.Contains(map_list[j+1,i])))){
                             if(neighbor1.Contains(map_list[j,i+1])&&neighbor2.Contains(map_list[j+1,i])){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.localScale=new Vector3(-block.transform.localScale.x,block.transform.localScale.y,block.transform.localScale.z);
                             }
                             if(neighbor2.Contains(map_list[j,i+1])&&neighbor1.Contains(map_list[j+1,i])){
-                                block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                                block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                                 block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                                 }
                                 
                         }
                         else if(i>0&&j<size_Y-1&&((neighbor1.Contains(map_list[j,i-1])&&neighbor2.Contains(map_list[j+1,i]))||(neighbor2.Contains(map_list[j,i-1])&&neighbor1.Contains(map_list[j+1,i])))){
                             if(neighbor1.Contains(map_list[j,i-1])&&neighbor2.Contains(map_list[j+1,i])){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             }
                             if(neighbor2.Contains(map_list[j,i-1])&&neighbor1.Contains(map_list[j+1,i])){
-                                block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                                block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                                 block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                                 block.transform.localScale=new Vector3(block.transform.localScale.x,-block.transform.localScale.y,block.transform.localScale.z);
                                 }
                         }
                         else if(i>0&&j>0&&((neighbor1.Contains(map_list[j,i-1])&&neighbor2.Contains(map_list[j-1,i]))||(neighbor2.Contains(map_list[j,i-1])&&neighbor1.Contains(map_list[j-1,i])))){
                             if(neighbor1.Contains(map_list[j,i-1])&&neighbor2.Contains(map_list[j-1,i])){
-                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                            block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                             block.transform.localScale=new Vector3(block.transform.localScale.x,-block.transform.localScale.y,block.transform.localScale.z);
                             }
                             if(neighbor2.Contains(map_list[j,i-1])&&neighbor1.Contains(map_list[j-1,i])){
-                                block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                                block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                                 block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                                 }
                         }
                         else if(i<size_X-1&&j>0&&((neighbor1.Contains(map_list[j,i+1])&&neighbor2.Contains(map_list[j-1,i]))||(neighbor2.Contains(map_list[j,i+1])&&neighbor1.Contains(map_list[j-1,i])))){
                             if(neighbor1.Contains(map_list[j,i+1])&&neighbor2.Contains(map_list[j-1,i])){
-                                block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                                block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                                 block.transform.Rotate(0.0f, 0.0f, 180.0f, Space.Self);
                                 }
                             if(neighbor2.Contains(map_list[j,i+1])&&neighbor1.Contains(map_list[j-1,i])){
-                                block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                                block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                                 block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                                 block.transform.localScale=new Vector3(-block.transform.localScale.x,block.transform.localScale.y,block.transform.localScale.z);
                                 }
@@ -385,21 +385,21 @@ public class Level_Generator : MonoBehaviour
                         }
                     }
                     if(l_r==1&&t_b==4){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         updates=true;
                     }
                     else if(l_r==0&&t_b==4){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                         updates=true;
                     }
                     else if(l_r==0&&t_b==3){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                         updates=true;
                     }
                     else if(l_r==1&&t_b==3){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                         updates=true;
                     }
@@ -407,7 +407,7 @@ public class Level_Generator : MonoBehaviour
 
 
                     else if(l_r==1&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i])&&(j==0||!neighbor1.Contains(map_list[j-1,i]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         if(map_list[j+1,i]==3){
                             inside_corner_info.Add(j+1);
                             inside_corner_info.Add(i);
@@ -416,7 +416,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(t_b==4&&i<size_X-1&&neighbor1.Contains(map_list[j,i+1])&&(i==0||!neighbor1.Contains(map_list[j,i-1]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         if(map_list[j,i+1]==3){
                             inside_corner_info.Add(j);
                             inside_corner_info.Add(i+1);
@@ -425,7 +425,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(l_r==0&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i])&&(j==0||!neighbor1.Contains(map_list[j-1,i]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                         if(map_list[j+1,i]==3){
                             inside_corner_info.Add(j+1);
@@ -435,7 +435,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(t_b==4&&i>0&&neighbor1.Contains(map_list[j,i-1])&&(i==size_X-1||!neighbor1.Contains(map_list[j,i+1]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                         if(map_list[j,i-1]==3){
                             inside_corner_info.Add(j);
@@ -445,7 +445,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(l_r==0&&j>0&&neighbor1.Contains(map_list[j-1,i])&&(j==size_Y-1||!neighbor1.Contains(map_list[j+1,i]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                         if(map_list[j-1,i]==3){
                             inside_corner_info.Add(j-1);
@@ -455,7 +455,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(t_b==3&&i>0&&neighbor1.Contains(map_list[j,i-1])&&(i==size_X-1||!neighbor1.Contains(map_list[j,i+1]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                         if(map_list[j,i-1]==3){
                             inside_corner_info.Add(j);
@@ -465,7 +465,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(l_r==1&&j>0&&neighbor1.Contains(map_list[j-1,i])&&(j==size_Y-1||!neighbor1.Contains(map_list[j+1,i]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                         if(map_list[j-1,i]==3){
                             inside_corner_info.Add(j-1);
@@ -475,7 +475,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(t_b==3&&i<size_X-1&&neighbor1.Contains(map_list[j,i+1])&&(i==0||!neighbor1.Contains(map_list[j,i-1]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                         if(map_list[j,i+1]==3){
                             inside_corner_info.Add(j);
@@ -520,65 +520,65 @@ public class Level_Generator : MonoBehaviour
                     }
                 }
                 if(l_r==1&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     }
                 else if(t_b==4&&i<size_X-1&&neighbor1.Contains(map_list[j,i+1])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     }
                 else if(l_r==0&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                     }
                 else if(t_b==4&&i>0&&neighbor1.Contains(map_list[j,i-1])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                     }
                 else if(l_r==0&&j>0&&neighbor1.Contains(map_list[j-1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                     }
                 else if(t_b==3&&i>0&&neighbor1.Contains(map_list[j,i-1])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                     }
                 else if(l_r==1&&j>0&&neighbor1.Contains(map_list[j-1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
                 else if(t_b==3&&i<size_X-1&&neighbor1.Contains(map_list[j,i+1])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
 
                 else if((i==size_X-1&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i]))||(i<size_X-1&&j==size_Y-1&&neighbor1.Contains(map_list[j,i+1]))||(i==size_X-1&&j==size_Y-1)){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                 }
                 else if((i==0&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i]))||(i>0&&j==size_Y-1&&neighbor1.Contains(map_list[j,i-1]))||(i==0&&j==size_Y-1)){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                 }
                 else if((i==0&&j>0&&neighbor1.Contains(map_list[j-1,i]))||(i>0&&j==0&&neighbor1.Contains(map_list[j,i-1]))||(i==0&&j==0)){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                 }
                 else if((i==size_X-1&&j>0&&neighbor1.Contains(map_list[j-1,i]))||(i<size_X-1&&j==0&&neighbor1.Contains(map_list[j,i+1]))||(i==size_X-1&&j==0)){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
 
                 else if(i<size_X-1&&j<size_Y-1&&neighbor1.Contains(map_list[j,i+1])&&neighbor1.Contains(map_list[j+1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                 }
                 else if(i>0&&j<size_Y-1&&neighbor1.Contains(map_list[j,i-1])&&neighbor1.Contains(map_list[j+1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                 }
                 else if(i>0&&j>0&&neighbor1.Contains(map_list[j,i-1])&&neighbor1.Contains(map_list[j-1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                 }
                 else if(i<size_X-1&&j>0&&neighbor1.Contains(map_list[j,i+1])&&neighbor1.Contains(map_list[j-1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
 
@@ -614,21 +614,21 @@ public class Level_Generator : MonoBehaviour
                         }
                     }
                     if(l_r==1&&t_b==4){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         updates=true;
                     }
                     else if(l_r==0&&t_b==4){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                         updates=true;
                     }
                     else if(l_r==0&&t_b==3){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                         updates=true;
                     }
                     else if(l_r==1&&t_b==3){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                         updates=true;
                     }
@@ -636,7 +636,7 @@ public class Level_Generator : MonoBehaviour
 
 
                     else if(l_r==1&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i])&&(j==0||!neighbor1.Contains(map_list[j-1,i]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         if(map_list[j+1,i]==1){
                             outside_corner_info.Add(j+1);
                             outside_corner_info.Add(i);
@@ -645,7 +645,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(t_b==4&&i<size_X-1&&neighbor1.Contains(map_list[j,i+1])&&(i==0||!neighbor1.Contains(map_list[j,i-1]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         if(map_list[j,i+1]==1){
                             outside_corner_info.Add(j);
                             outside_corner_info.Add(i+1);
@@ -654,7 +654,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(l_r==0&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i])&&(j==0||!neighbor1.Contains(map_list[j-1,i]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                         if(map_list[j+1,i]==1){
                             outside_corner_info.Add(j+1);
@@ -664,7 +664,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(t_b==4&&i>0&&neighbor1.Contains(map_list[j,i-1])&&(i==size_X-1||!neighbor1.Contains(map_list[j,i+1]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                         if(map_list[j,i-1]==1){
                             outside_corner_info.Add(j);
@@ -674,7 +674,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(l_r==0&&j>0&&neighbor1.Contains(map_list[j-1,i])&&(j==size_Y-1||!neighbor1.Contains(map_list[j+1,i]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                         if(map_list[j-1,i]==1){
                             outside_corner_info.Add(j-1);
@@ -684,7 +684,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(t_b==3&&i>0&&neighbor1.Contains(map_list[j,i-1])&&(i==size_X-1||!neighbor1.Contains(map_list[j,i+1]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                         if(map_list[j,i-1]==1){
                             outside_corner_info.Add(j);
@@ -694,7 +694,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(l_r==1&&j>0&&neighbor1.Contains(map_list[j-1,i])&&(j==size_Y-1||!neighbor1.Contains(map_list[j+1,i]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                         if(map_list[j-1,i]==1){
                             outside_corner_info.Add(j-1);
@@ -704,7 +704,7 @@ public class Level_Generator : MonoBehaviour
                         updates=true;
                     }
                     else if(t_b==3&&i<size_X-1&&neighbor1.Contains(map_list[j,i+1])&&(i==0||!neighbor1.Contains(map_list[j,i-1]))){
-                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                        block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                         block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                         if(map_list[j,i+1]==1){
                             outside_corner_info.Add(j);
@@ -749,65 +749,65 @@ public class Level_Generator : MonoBehaviour
                     }
                 }
                 if(l_r==1&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     }
                 else if(t_b==4&&i<size_X-1&&neighbor1.Contains(map_list[j,i+1])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     }
                 else if(l_r==0&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                     }
                 else if(t_b==4&&i>0&&neighbor1.Contains(map_list[j,i-1])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                     }
                 else if(l_r==0&&j>0&&neighbor1.Contains(map_list[j-1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                     }
                 else if(t_b==3&&i>0&&neighbor1.Contains(map_list[j,i-1])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                     }
                 else if(l_r==1&&j>0&&neighbor1.Contains(map_list[j-1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
                 else if(t_b==3&&i<size_X-1&&neighbor1.Contains(map_list[j,i+1])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
 
                 else if((i==size_X-1&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i]))||(i<size_X-1&&j==size_Y-1&&neighbor1.Contains(map_list[j,i+1]))||(i==size_X-1&&j==size_Y-1)){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                 }
                 else if((i==0&&j<size_Y-1&&neighbor1.Contains(map_list[j+1,i]))||(i>0&&j==size_Y-1&&neighbor1.Contains(map_list[j,i-1]))||(i==0&&j==size_Y-1)){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                 }
                 else if((i==0&&j>0&&neighbor1.Contains(map_list[j-1,i]))||(i>0&&j==0&&neighbor1.Contains(map_list[j,i-1]))||(i==0&&j==0)){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                 }
                 else if((i==size_X-1&&j>0&&neighbor1.Contains(map_list[j-1,i]))||(i<size_X-1&&j==0&&neighbor1.Contains(map_list[j,i+1]))||(i==size_X-1&&j==0)){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
 
                 else if(i<size_X-1&&j<size_Y-1&&neighbor1.Contains(map_list[j,i+1])&&neighbor1.Contains(map_list[j+1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                 }
                 else if(i>0&&j<size_Y-1&&neighbor1.Contains(map_list[j,i-1])&&neighbor1.Contains(map_list[j+1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -90.0f, Space.Self);
                 }
                 else if(i>0&&j>0&&neighbor1.Contains(map_list[j,i-1])&&neighbor1.Contains(map_list[j-1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, -180.0f, Space.Self);
                 }
                 else if(i<size_X-1&&j>0&&neighbor1.Contains(map_list[j,i+1])&&neighbor1.Contains(map_list[j-1,i])){
-                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity);
+                    block=Instantiate(mapObject,new Vector3(i-size_x,size_y-j-1,0), Quaternion.identity,GameObject.Find("Map").transform);
                     block.transform.Rotate(0.0f, 0.0f, 90.0f, Space.Self);
                 }
 
