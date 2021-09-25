@@ -431,7 +431,6 @@ GameObject:
   - component: {fileID: 963194228}
   - component: {fileID: 963194227}
   - component: {fileID: 963194226}
-  - component: {fileID: 963194229}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -504,28 +503,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &963194229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 963194225}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4cb3ddd84695b024086b775fed223351, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Camera: {fileID: 963194227}
-  Life: {fileID: 4514476934629786507, guid: d3188f20a33beec48b56f32352e69576, type: 3}
-  Pellet: {fileID: 872312954424740574, guid: 9ef6b3dd0372ae643a9c7bd4b89605ac, type: 3}
-  Power_Pellet: {fileID: 7017174734759088199, guid: 1a272a2133da3654f8a438d8febb9bb1, type: 3}
-  Bonus_Pellet: {fileID: 8864860461930061783, guid: eaf0f77cf046a4f4d9c2ebdac2507290, type: 3}
-  Inside_Corner: {fileID: 4950311406930349498, guid: ce056ef543a10ad4fa9d73356fd29824, type: 3}
-  Inside_Wall: {fileID: 4142089657248162071, guid: d5ba9ed40e67a544481a26f321dd3f06, type: 3}
-  Outside_Corner: {fileID: 7769368457885475178, guid: 03326d6b76eba81418d44e0dfe6e1060, type: 3}
-  Outside_Wall: {fileID: 5612825419816465723, guid: c6422e2af853de1418f7b3a8d847909b, type: 3}
-  Junction: {fileID: 7295770267750389449, guid: d24d6b8df4b552d4486048d4d13edff6, type: 3}
 --- !u!4 &1186635281 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 708576418208405704, guid: d3c3622ba85a32e439fe16255e9120bf, type: 3}
@@ -545,6 +522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1262218057}
+  - component: {fileID: 1262218058}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -566,6 +544,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1262218058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1262218056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4cb3ddd84695b024086b775fed223351, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Camera: {fileID: 963194227}
+  Life: {fileID: 4514476934629786507, guid: d3188f20a33beec48b56f32352e69576, type: 3}
+  Pellet: {fileID: 872312954424740574, guid: 9ef6b3dd0372ae643a9c7bd4b89605ac, type: 3}
+  Power_Pellet: {fileID: 7017174734759088199, guid: 1a272a2133da3654f8a438d8febb9bb1, type: 3}
+  Bonus_Pellet: {fileID: 8864860461930061783, guid: eaf0f77cf046a4f4d9c2ebdac2507290, type: 3}
+  Inside_Corner: {fileID: 4950311406930349498, guid: ce056ef543a10ad4fa9d73356fd29824, type: 3}
+  Inside_Wall: {fileID: 4142089657248162071, guid: d5ba9ed40e67a544481a26f321dd3f06, type: 3}
+  Outside_Corner: {fileID: 7769368457885475178, guid: 03326d6b76eba81418d44e0dfe6e1060, type: 3}
+  Outside_Wall: {fileID: 5612825419816465723, guid: c6422e2af853de1418f7b3a8d847909b, type: 3}
+  Junction: {fileID: 7295770267750389449, guid: d24d6b8df4b552d4486048d4d13edff6, type: 3}
 --- !u!1 &1298416770
 GameObject:
   m_ObjectHideFlags: 0

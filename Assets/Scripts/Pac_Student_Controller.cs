@@ -15,7 +15,7 @@ public class Pac_Student_Controller : MonoBehaviour
     void Start()
     {
         Pac_Animator=GetComponent<Animator>();
-        LevelGenerator=Camera.main.GetComponents<Level_Generator>();
+        LevelGenerator=GameObject.Find("Map").GetComponents<Level_Generator>();
         Map_Size=LevelGenerator[0].Get_Size();
         gameObject.transform.position=new Vector3(-Map_Size[0]+1,Map_Size[1]-2,0);
         tweener=GetComponent<Tweener>();
