@@ -6,6 +6,7 @@ public class Tweener : MonoBehaviour
 {
     //private Tween activeTween;
     private Tween activeTween;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +17,12 @@ public class Tweener : MonoBehaviour
     void Update()
     {
         if (activeTween != null){
-            if (Vector3.Distance(activeTween.Target.position, activeTween.EndPos) > 0.01f)
+            if (Vector3.Distance(activeTween.Target.position, activeTween.EndPos) > 0.05f)
                 {
                     float fraction = (Time.time - activeTween.StartTime) / activeTween.Duration;
                     activeTween.Target.position = Vector3.Lerp(activeTween.StartPos, activeTween.EndPos, fraction);
                 }
-            if (Vector3.Distance(activeTween.Target.position, activeTween.EndPos) <= 0.01f)
+            if (Vector3.Distance(activeTween.Target.position, activeTween.EndPos) <= 0.05f)
                 {
                     activeTween.Target.position = activeTween.EndPos;
                     activeTween = null;
