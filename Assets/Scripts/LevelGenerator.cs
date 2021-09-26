@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Level_Generator : MonoBehaviour
+public class LevelGenerator : MonoBehaviour
 {
     private int[,] levelMap={
         {1,2,2,2,2,2,2,2,2,2,2,2,2,7}, 
