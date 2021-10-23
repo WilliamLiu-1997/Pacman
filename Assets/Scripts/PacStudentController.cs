@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pac_Student_Controller : MonoBehaviour
+public class PacStudentController : MonoBehaviour
 {
     Animator Pac_Animator;
     public AudioSource Moving_Sound;
