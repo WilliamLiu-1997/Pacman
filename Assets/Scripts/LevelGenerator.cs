@@ -38,7 +38,6 @@ public class LevelGenerator : MonoBehaviour
     private ArrayList Pellet_Positions=new ArrayList();
     private ArrayList Power_Pellet_Positions=new ArrayList();
 
-    private GameObject Pac_student_Show_Die_Animation;
     // Start is called before the first frame update
 
     void Start(){}
@@ -58,7 +57,6 @@ public class LevelGenerator : MonoBehaviour
         }
         int size_X=map_list.GetLength(1);
         int size_Y=map_list.GetLength(0);
-        Pac_student_Show_Die_Animation=GameObject.Find("Pac_Student(Show Die Animation)");
         ArrayList inside_corner_info=new ArrayList();
         ArrayList outside_corner_info=new ArrayList();
         GameObject block;
@@ -68,8 +66,11 @@ public class LevelGenerator : MonoBehaviour
         int[] neighbor2;
         Camera.orthographicSize =size_x>size_y?size_x+2:size_y+2;
         GameObject life1=Instantiate(Life,new Vector3(-size_x+1,-size_y,0), Quaternion.identity,GameObject.Find("Indictors").transform);
+        life1.name = "life1";
         GameObject life2=Instantiate(Life,new Vector3(-size_x+3,-size_y,0), Quaternion.identity,GameObject.Find("Indictors").transform);
+        life2.name = "life2";
         GameObject life3=Instantiate(Life,new Vector3(-size_x+5,-size_y,0), Quaternion.identity,GameObject.Find("Indictors").transform);
+        life3.name = "life3";
         GameObject bonus=Instantiate(Bonus_Pellet,new Vector3(size_x-1.5f,-size_y,0), Quaternion.identity,GameObject.Find("Indictors").transform);
         bonus.transform.localScale=new Vector3(2f,2f,2f);
 
@@ -821,9 +822,6 @@ public class LevelGenerator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Pac_student_Show_Die_Animation.GetComponent<Animator>().SetTrigger("Up");
-        Pac_student_Show_Die_Animation.GetComponent<Animator>().SetTrigger("Die");
-        Pac_student_Show_Die_Animation.GetComponent<Animator>().SetTrigger("Exit");
     }
 
     public int[] Get_Size(){
