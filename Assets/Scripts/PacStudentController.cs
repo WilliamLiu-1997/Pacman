@@ -10,13 +10,15 @@ public class PacStudentController : MonoBehaviour
     private int[] Map_Size;
     private LevelGenerator[] LevelGenerator;
     private bool Moving;
-    
+    private int[,] map;
+
     // Start is called before the first frame update
     void Start()
     {
         Pac_Animator=GetComponent<Animator>();
         LevelGenerator=GameObject.Find("Map").GetComponents<LevelGenerator>();
         Map_Size=LevelGenerator[0].Get_Size();
+        map = LevelGenerator[0].Get_Map();
         gameObject.transform.position=new Vector3(-Map_Size[0]+1,Map_Size[1]-2,0);
         tweener=GetComponent<Tweener>();
         Moving_Sound=GetComponent<AudioSource>();
