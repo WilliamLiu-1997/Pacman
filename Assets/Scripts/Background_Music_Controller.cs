@@ -18,12 +18,9 @@ public class Background_Music_Controller : MonoBehaviour
 
 
     // Start is called before the first frame update
-    IEnumerator Start()
+    void Start()
     {
         my_Audio=GetComponent<AudioSource>();
-        my_Audio.clip = backgroundClip;
-        my_Audio.Play();
-        yield return new WaitForSeconds(my_Audio.clip.length);
         playNormalGhost();
     }
 
