@@ -7,6 +7,7 @@ public class PacStudentController : MonoBehaviour
 {
     Animator Pac_Animator;
     public AudioSource Moving_Sound;
+    public ParticleSystem dust;
     private Tweener tweener;
     private int[] Map_Size;
     private LevelGenerator[] LevelGenerator;
@@ -30,6 +31,7 @@ public class PacStudentController : MonoBehaviour
         tweener = GetComponent<Tweener>();
         Moving_Sound = GetComponent<AudioSource>();
         Moving = false;
+        dust.Stop();
     }
 
     // Update is called once per frame
@@ -157,10 +159,12 @@ public class PacStudentController : MonoBehaviour
         {
             ResetTrigger();
             Pac_Animator.SetTrigger("Stop");
+            dust.Stop();
             Moving_Sound.Stop();
         }
         else
         {
+            dust.Play();
             Moving_Sound.Play();
         }
     }

@@ -491,7 +491,7 @@ ParticleSystem:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 201548667}
   serializedVersion: 7
-  lengthInSec: 1
+  lengthInSec: 0.1
   simulationSpeed: 0.5
   stopAction: 0
   cullingMode: 0
@@ -566,7 +566,7 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 1
+      scalar: 0.1
       minScalar: 5
       maxCurve:
         serializedVersion: 2
@@ -1316,7 +1316,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 50
+      scalar: 300
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -6552,6 +6552,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Moving_Sound: {fileID: 0}
+  dust: {fileID: 201548670}
 --- !u!114 &1615336279
 MonoBehaviour:
   m_ObjectHideFlags: 0
