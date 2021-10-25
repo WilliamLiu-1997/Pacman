@@ -44,26 +44,7 @@ public class PacStudentController : MonoBehaviour
         {
             GetInput();
             Move();
-            // if(gameObject.transform.position.y==Map_Size[1]-2&&gameObject.transform.position.x<-Map_Size[0]+6){
-            //     ResetTrigger();
-            //     Pac_Animator.SetTrigger("Right");
-            //     tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x+1,gameObject.transform.position.y,gameObject.transform.position.z),0.2f);
-            // }
-            // if(gameObject.transform.position.y==Map_Size[1]-6&&gameObject.transform.position.x>-Map_Size[0]+1){
-            //     ResetTrigger();
-            //     Pac_Animator.SetTrigger("Left");
-            //     tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x-1,gameObject.transform.position.y,gameObject.transform.position.z),0.2f);
-            // }
-            // if(gameObject.transform.position.x==-Map_Size[0]+1&&gameObject.transform.position.y<Map_Size[1]-2){
-            //     ResetTrigger();
-            //     Pac_Animator.SetTrigger("Up");
-            //     tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x,gameObject.transform.position.y+1,gameObject.transform.position.z),0.2f);
-            // }
-            // if(gameObject.transform.position.x==-Map_Size[0]+6&&gameObject.transform.position.y>Map_Size[1]-6){
-            //     ResetTrigger();
-            //     Pac_Animator.SetTrigger("Down");
-            //     tweener.AddTween(gameObject.transform,gameObject.transform.position,new Vector3(gameObject.transform.position.x,gameObject.transform.position.y-1,gameObject.transform.position.z),0.2f);
-            // }
+            Teleport();
         }
     }
 
@@ -101,7 +82,7 @@ public class PacStudentController : MonoBehaviour
         }
         if (lastInput == "down")
         {
-            if (!(Y_in_Map == Map_Size[1] * 2 - 1 || block.Contains(map[Y_in_Map + 1, X_in_Map]))) { currentInput = lastInput; }
+            if (!(Y_in_Map == Map_Size[1] * 2 - 2 || block.Contains(map[Y_in_Map + 1, X_in_Map]))) { currentInput = lastInput; }
         }
         if (lastInput == "left")
         {
@@ -109,19 +90,20 @@ public class PacStudentController : MonoBehaviour
         }
         if (lastInput == "right")
         {
-            if (!(X_in_Map == Map_Size[0] * 2 || block.Contains(map[Y_in_Map, X_in_Map + 1]))) { currentInput = lastInput; }
+            if (!(X_in_Map == Map_Size[0] * 2 - 1 || block.Contains(map[Y_in_Map, X_in_Map + 1]))) { currentInput = lastInput; }
         }
     }
 
     public void Move()
     {
-        int[] block = new int[5] { 1, 2, 3, 4,7 };
+        int[] block = new int[5] { 1, 2, 3, 4, 7 };
         float X = gameObject.transform.position.x;
         float Y = gameObject.transform.position.y;
         if (X != destination[0] || Y != destination[1]) { return; }
         int X_in_Map = (int)source[0] + Map_Size[0];
         int Y_in_Map = (int)-source[1] + Map_Size[1] - 1;
-        Debug.Log("x:"+X_in_Map.ToString() +" Y:"+ Y_in_Map.ToString());
+
+        bool canMove = false;
         if (currentInput == "up")
         {
             if (!(Y_in_Map == 0 || block.Contains(map[Y_in_Map - 1, X_in_Map])))
@@ -131,17 +113,19 @@ public class PacStudentController : MonoBehaviour
                 tweener.AddTween(gameObject.transform, gameObject.transform.position, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 1, gameObject.transform.position.z), 0.2f);
                 source = destination;
                 destination[1] = gameObject.transform.position.y + 1;
+                canMove = true;
             }
         }
         if (currentInput == "down")
         {
-            if (!(Y_in_Map == Map_Size[1] * 2 - 1 || block.Contains(map[Y_in_Map + 1, X_in_Map])))
+            if (!(Y_in_Map == Map_Size[1] * 2 - 2 || block.Contains(map[Y_in_Map + 1, X_in_Map])))
             {
                 ResetTrigger();
                 Pac_Animator.SetTrigger("Down");
                 tweener.AddTween(gameObject.transform, gameObject.transform.position, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 1, gameObject.transform.position.z), 0.2f);
                 source = destination;
                 destination[1] = gameObject.transform.position.y - 1;
+                canMove = true;
             }
         }
         if (currentInput == "left")
@@ -153,18 +137,51 @@ public class PacStudentController : MonoBehaviour
                 tweener.AddTween(gameObject.transform, gameObject.transform.position, new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z), 0.2f);
                 source = destination;
                 destination[0] = (int)gameObject.transform.position.x - 1;
+                canMove = true;
             }
         }
         if (currentInput == "right")
         {
-            if (!(X_in_Map == Map_Size[0] * 2 || block.Contains(map[Y_in_Map, X_in_Map + 1])))
+            if (!(X_in_Map == Map_Size[0] * 2 - 1 || block.Contains(map[Y_in_Map, X_in_Map + 1])))
             {
                 ResetTrigger();
                 Pac_Animator.SetTrigger("Right");
                 tweener.AddTween(gameObject.transform, gameObject.transform.position, new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z), 0.2f);
                 source = destination;
                 destination[0] = (int)gameObject.transform.position.x + 1;
+                canMove = true;
             }
+        }
+
+        if (!canMove)
+        {
+            ResetTrigger();
+            Pac_Animator.SetTrigger("Stop");
+            Moving_Sound.Stop();
+        }
+        else
+        {
+            Moving_Sound.Play();
+        }
+    }
+
+    public void Teleport()
+    {
+        if (gameObject.transform.position.x == -Map_Size[0] && currentInput == "left")
+        {
+            gameObject.transform.position = new Vector3(Map_Size[0] - 1, gameObject.transform.position.y, 0);
+            tweener.AddTween(gameObject.transform, gameObject.transform.position, new Vector3(gameObject.transform.position.x - 1, gameObject.transform.position.y, gameObject.transform.position.z), 0.2f);
+            source[0] = gameObject.transform.position.x;
+            destination[0] = (int)gameObject.transform.position.x - 1;
+            Moving_Sound.Play();
+        }
+        if (gameObject.transform.position.x == Map_Size[0] - 1 && currentInput == "right")
+        {
+            gameObject.transform.position = new Vector3(-Map_Size[0], gameObject.transform.position.y, 0);
+            tweener.AddTween(gameObject.transform, gameObject.transform.position, new Vector3(gameObject.transform.position.x + 1, gameObject.transform.position.y, gameObject.transform.position.z), 0.2f);
+            source[0] = gameObject.transform.position.x;
+            destination[0] = (int)gameObject.transform.position.x + 1;
+            Moving_Sound.Play();
         }
     }
 
@@ -175,5 +192,6 @@ public class PacStudentController : MonoBehaviour
         Pac_Animator.ResetTrigger("Left");
         Pac_Animator.ResetTrigger("Right");
         Pac_Animator.ResetTrigger("Die");
+        Pac_Animator.ResetTrigger("Stop");
     }
 }
