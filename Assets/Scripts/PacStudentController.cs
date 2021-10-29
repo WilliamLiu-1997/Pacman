@@ -53,8 +53,8 @@ public class PacStudentController : MonoBehaviour
         {
             GetInput();
             Move();
+            PowerPellet();
         }
-        PowerPellet();
     }
 
     public void PowerPellet()
@@ -64,8 +64,8 @@ public class PacStudentController : MonoBehaviour
         {
             deltatime = 0;
             int ran = Random.Range(0, 4);
-            float x=int.MaxValue;
-            float y=int.MaxValue;
+            float x = int.MaxValue;
+            float y = int.MaxValue;
             if (ran == 0)
             {
                 x = -(map.GetLength(1) + 4) / 2;
@@ -86,11 +86,12 @@ public class PacStudentController : MonoBehaviour
                 x = Random.Range(-(map.GetLength(1) + 4), (map.GetLength(1) + 4));
                 y = (map.GetLength(0) + 4) / 2;
             }
-            if(Bonus_Pellet_Instance!=null){
+            if (Bonus_Pellet_Instance != null)
+            {
                 Destroy(Bonus_Pellet_Instance);
                 Bonus_Pellet_Instance = null;
             }
-            Bonus_Pellet_Instance=Instantiate(Bonus_Pellet, new Vector3(x, y, 0), Quaternion.identity, GameObject.Find("Map").transform);
+            Bonus_Pellet_Instance = Instantiate(Bonus_Pellet, new Vector3(x, y, 0), Quaternion.identity, GameObject.Find("Map").transform);
             if (Bonus_Pellet_Instance != null)
             {
                 tweener.AddTween(Bonus_Pellet_Instance.transform, Bonus_Pellet_Instance.transform.position, new Vector3(-x, -y, 10), 10f);
