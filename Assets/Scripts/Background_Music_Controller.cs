@@ -13,26 +13,29 @@ public class Background_Music_Controller : MonoBehaviour
     public AudioClip deadGhostClip;
 
     public AudioClip dieClip;
+    public bool Started;
 
     AudioSource my_Audio;
 
 
     // Start is called before the first frame update
-    IEnumerator Start()
+    void Start()
     {
-        my_Audio=GetComponent<AudioSource>();
-        my_Audio.clip = backgroundClip;
-        my_Audio.Play();
-        yield return new WaitForSeconds(my_Audio.clip.length);
-        playNormalGhost();
+        my_Audio = GetComponent<AudioSource>();
+        Started = false;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (Started)
+        {
+            if (!my_Audio.isPlaying) playNormalGhost();
+        }
     }
 
-    public float playStart(){
+    public float playStart()
+    {
         my_Audio.clip = backgroundClip;
         my_Audio.loop = false;
         my_Audio.Play();
