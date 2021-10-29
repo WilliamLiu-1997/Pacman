@@ -11,7 +11,8 @@ public class PacStudentController : MonoBehaviour
     public AudioSource Eat_Sound;
     public ParticleSystem dust;
     public ParticleSystem hit;
-    private Tweener tweener;
+    public Tweener tweener;
+    public Tweener tweener_bonus;
     private int[] Map_Size;
     private LevelGenerator[] LevelGenerator;
     public GameObject Bonus_Pellet;
@@ -34,7 +35,6 @@ public class PacStudentController : MonoBehaviour
         gameObject.transform.position = new Vector3(-Map_Size[0] + 1, Map_Size[1] - 2, 0);
         destination = new float[2] { gameObject.transform.position.x, gameObject.transform.position.y };
         source = new float[2] { gameObject.transform.position.x, gameObject.transform.position.y };
-        tweener = GetComponent<Tweener>();
         Started = false;
         dust.Stop();
         hit.Stop();
@@ -94,7 +94,7 @@ public class PacStudentController : MonoBehaviour
             Bonus_Pellet_Instance = Instantiate(Bonus_Pellet, new Vector3(x, y, 0), Quaternion.identity, GameObject.Find("Map").transform);
             if (Bonus_Pellet_Instance != null)
             {
-                tweener.AddTween(Bonus_Pellet_Instance.transform, Bonus_Pellet_Instance.transform.position, new Vector3(-x, -y, 10), 10f);
+                tweener_bonus.AddTween(Bonus_Pellet_Instance.transform, Bonus_Pellet_Instance.transform.position, new Vector3(-x, -y, 10), 10f);
             }
         }
     }
