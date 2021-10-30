@@ -13,6 +13,10 @@ public class Background_Music_Controller : MonoBehaviour
     public AudioClip deadGhostClip;
 
     public AudioClip dieClip;
+    public GameObject GhostRed;
+    public GameObject GhostPink;
+    public GameObject GhostGreen;
+    public GameObject GhostBlue;
     public bool Started;
 
     AudioSource my_Audio;
@@ -30,7 +34,7 @@ public class Background_Music_Controller : MonoBehaviour
     {
         if (Started)
         {
-            if (!my_Audio.isPlaying) playNormalGhost();
+            if (!my_Audio.isPlaying) playStartGhost();
         }
     }
 
@@ -42,25 +46,84 @@ public class Background_Music_Controller : MonoBehaviour
         return (float)my_Audio.clip.length;
     }
 
-    public void playNormalGhost()
+    public void playStartGhost()
     {
+        my_Audio.Stop();
         my_Audio.clip = normalGhostClip;
         my_Audio.loop = true;
         my_Audio.Play();
     }
-
-    public void playScaredGhost()
+    public void playNormalGhost(int i)
     {
-        my_Audio.clip = scaredGhostClip;
-        my_Audio.loop = true;
-        my_Audio.Play();
+        if (my_Audio.clip != normalGhostClip)
+        {
+            my_Audio.Stop();
+            my_Audio.clip = normalGhostClip;
+            my_Audio.loop = true;
+            my_Audio.Play();
+        }
+        if (i == 0) GhostRed.GetComponent<Ghost_Controller>().Normal();
+        if (i == 1) GhostPink.GetComponent<Ghost_Controller>().Normal();
+        if (i == 2) GhostGreen.GetComponent<Ghost_Controller>().Normal();
+        if (i == 3) GhostBlue.GetComponent<Ghost_Controller>().Normal();
     }
 
-    public void playDeadGhost()
+    public void playScaredGhost(int i)
     {
-        my_Audio.clip = deadGhostClip;
-        my_Audio.loop = true;
-        my_Audio.Play();
+        if (my_Audio.clip != scaredGhostClip)
+        {
+            my_Audio.Stop();
+            my_Audio.clip = scaredGhostClip;
+            my_Audio.loop = true;
+            my_Audio.Play();
+        }
+        if (i == 0) GhostRed.GetComponent<Ghost_Controller>().Scare();
+        if (i == 1) GhostPink.GetComponent<Ghost_Controller>().Scare();
+        if (i == 2) GhostGreen.GetComponent<Ghost_Controller>().Scare();
+        if (i == 3) GhostBlue.GetComponent<Ghost_Controller>().Scare();
+    }
+    public void playRecoverGhost(int i)
+    {
+        if (my_Audio.clip != scaredGhostClip)
+        {
+            my_Audio.Stop();
+            my_Audio.clip = scaredGhostClip;
+            my_Audio.loop = true;
+            my_Audio.Play();
+        }
+        if (i == 0) GhostRed.GetComponent<Ghost_Controller>().Recover();
+        if (i == 1) GhostPink.GetComponent<Ghost_Controller>().Recover();
+        if (i == 2) GhostGreen.GetComponent<Ghost_Controller>().Recover();
+        if (i == 3) GhostBlue.GetComponent<Ghost_Controller>().Recover();
+    }
+
+    public void playDeadGhost(int i)
+    {
+        if (my_Audio.clip != deadGhostClip)
+        {
+            my_Audio.Stop();
+            my_Audio.clip = deadGhostClip;
+            my_Audio.loop = true;
+            my_Audio.Play();
+        }
+        if (i == 0) GhostRed.GetComponent<Ghost_Controller>().Die();
+        if (i == 1) GhostPink.GetComponent<Ghost_Controller>().Die();
+        if (i == 2) GhostGreen.GetComponent<Ghost_Controller>().Die();
+        if (i == 3) GhostBlue.GetComponent<Ghost_Controller>().Die();
+    }
+    public void resetGhost(int i)
+    {
+        if (i == 0) GhostRed.GetComponent<Ghost_Controller>().Reset();
+        if (i == 1) GhostPink.GetComponent<Ghost_Controller>().Reset();
+        if (i == 2) GhostGreen.GetComponent<Ghost_Controller>().Reset();
+        if (i == 3) GhostBlue.GetComponent<Ghost_Controller>().Reset();
+        if (i == -1)
+        {
+            GhostRed.GetComponent<Ghost_Controller>().Reset();
+            GhostPink.GetComponent<Ghost_Controller>().Reset();
+            GhostGreen.GetComponent<Ghost_Controller>().Reset();
+            GhostBlue.GetComponent<Ghost_Controller>().Reset();
+        }
     }
 
     public float playDie()
