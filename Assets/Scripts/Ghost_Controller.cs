@@ -5,20 +5,10 @@ using UnityEngine;
 public class Ghost_Controller : MonoBehaviour
 {
     Animator Ghost_Animator;
-    private float duration_Normal;
-    private float duration_Scare;
-    private float duration_Awake;
-    private float duration_Die;
-    private float duration_Rotation;
     // Start is called before the first frame update
     void Start()
     {
         Ghost_Animator=GetComponent<Animator>();
-        duration_Normal=0;
-        duration_Scare=-1;
-        duration_Awake=-1;
-        duration_Die=-1;
-        duration_Rotation=0;
     }
 
     // Update is called once per frame
@@ -63,5 +53,21 @@ public class Ghost_Controller : MonoBehaviour
         //     gameObject.transform.eulerAngles=new Vector3(0, 0, 90);
         // }
         // if(duration_Rotation>4)duration_Rotation=0;
+    }
+
+    public void Normal(){
+        Ghost_Animator.SetTrigger("Recover");
+    }
+    public void Scare()
+    {
+        Ghost_Animator.SetTrigger("Scare");
+    }
+    public void Recover()
+    {
+        Ghost_Animator.SetTrigger("Awake");
+    }
+    public void Die()
+    {
+        Ghost_Animator.SetTrigger("Die");
     }
 }

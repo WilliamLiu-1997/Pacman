@@ -348,27 +348,13 @@ public class LevelGenerator : MonoBehaviour
                         break;
                     case 5:
                         mapObject = Pellet;
-                        block = Instantiate(mapObject, new Vector3(i - size_x, size_y - j - 1, 0), Quaternion.identity, GameObject.Find("Pellets").transform);
-                        block.name = i.ToString() + "_" + j.ToString(); block = Instantiate(mapObject, new Vector3(size_x - i - 1, size_y - j - 1, 0), Quaternion.identity, GameObject.Find("Pellets").transform);
-                        block.name = i.ToString() + "_" + j.ToString(); if (j != size_y - 1)
-                        {
-                            block = Instantiate(mapObject, new Vector3(i - size_x, j - size_y + 1, 0), Quaternion.identity, GameObject.Find("Pellets").transform);
-                            block.name = i.ToString() + "_" + j.ToString(); block = Instantiate(mapObject, new Vector3(size_x - i - 1, j - size_y + 1, 0), Quaternion.identity, GameObject.Find("Pellets").transform);
-                            block.name = i.ToString() + "_" + j.ToString();
-                        }
+                        block = Instantiate(mapObject, new Vector3(i - size_x, size_y - j - 1, 0), Quaternion.identity, GameObject.Find("Map").transform);
+                        block.name = i.ToString() + "_" + j.ToString(); 
                         break;
                     case 6:
                         mapObject = Power_Pellet;
-                        block = Instantiate(mapObject, new Vector3(i - size_x, size_y - j - 1, 0), Quaternion.identity, GameObject.Find("PowerPellets").transform);
+                        block = Instantiate(mapObject, new Vector3(i - size_x, size_y - j - 1, 0), Quaternion.identity, GameObject.Find("Map").transform);
                         block.name = i.ToString() + "_" + j.ToString(); 
-                        block = Instantiate(mapObject, new Vector3(size_x - i - 1, size_y - j - 1, 0), Quaternion.identity, GameObject.Find("PowerPellets").transform);
-                        block.name = i.ToString() + "_" + j.ToString(); if (j != size_y - 1)
-                        {
-                            block = Instantiate(mapObject, new Vector3(i - size_x, j - size_y + 1, 0), Quaternion.identity, GameObject.Find("PowerPellets").transform);
-                            block.name = i.ToString() + "_" + j.ToString(); 
-                            block = Instantiate(mapObject, new Vector3(size_x - i - 1, j - size_y + 1, 0), Quaternion.identity, GameObject.Find("PowerPellets").transform);
-                            block.name = i.ToString() + "_" + j.ToString();
-                        }
                         break;
                     case 7:
                         mapObject = Junction;

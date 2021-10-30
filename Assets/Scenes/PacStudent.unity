@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &27637055 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8436566648171248707, guid: 950d05770e4b0e64e9354eae644ba512, type: 3}
+  m_PrefabInstance: {fileID: 8436566647788029230}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &38256669
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +390,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165661763}
   m_CullTransparentMesh: 1
+--- !u!1 &194927821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 708576418208405703, guid: d3c3622ba85a32e439fe16255e9120bf, type: 3}
+  m_PrefabInstance: {fileID: 708576418201970577}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &201548667
 GameObject:
   m_ObjectHideFlags: 0
@@ -5273,36 +5283,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 284288566}
   m_CullTransparentMesh: 1
---- !u!1 &288285696
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 288285697}
-  m_Layer: 0
-  m_Name: PowerPellets
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &288285697
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 288285696}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.46798056, y: -0.045259595, z: -1.8871243}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &355796471
 GameObject:
   m_ObjectHideFlags: 0
@@ -5382,6 +5362,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 355796471}
   m_CullTransparentMesh: 1
+--- !u!1 &370970544 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 782628618960523643, guid: 50c5ae6991cdd704fa7af97f9c4b9cbb, type: 3}
+  m_PrefabInstance: {fileID: 782628619201538630}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &545875091
 GameObject:
   m_ObjectHideFlags: 0
@@ -6241,6 +6226,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 747462262001187350, guid: 9655b89f50dfb854299692b2f8eeee1b, type: 3}
   m_PrefabInstance: {fileID: 747462262520816916}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1215540601 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 747462262001187819, guid: 9655b89f50dfb854299692b2f8eeee1b, type: 3}
+  m_PrefabInstance: {fileID: 747462262520816916}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1262218056
 GameObject:
   m_ObjectHideFlags: 0
@@ -6294,36 +6284,6 @@ MonoBehaviour:
   Outside_Corner: {fileID: 7769368457885475178, guid: 03326d6b76eba81418d44e0dfe6e1060, type: 3}
   Outside_Wall: {fileID: 5612825419816465723, guid: c6422e2af853de1418f7b3a8d847909b, type: 3}
   Junction: {fileID: 7295770267750389449, guid: d24d6b8df4b552d4486048d4d13edff6, type: 3}
---- !u!1 &1298416770
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1298416771}
-  m_Layer: 0
-  m_Name: Pellets
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1298416771
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298416770}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.46798056, y: -0.045259595, z: -1.8871243}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1318247186
 GameObject:
   m_ObjectHideFlags: 0
@@ -11294,7 +11254,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 123
+  m_Text: 
 --- !u!222 &1462638575
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -11333,7 +11293,11 @@ MonoBehaviour:
   tweener: {fileID: 1615336279}
   tweener_bonus: {fileID: 1615336283}
   Bonus_Pellet: {fileID: 8864860461930061783, guid: eaf0f77cf046a4f4d9c2ebdac2507290, type: 3}
+  Score: {fileID: 355796471}
+  OverallTime: {fileID: 545875091}
+  ScaredTime: {fileID: 1462638572}
   Bonus_Pellet_Instance: {fileID: 0}
+  Background: {fileID: 1632363241}
   Started: 0
 --- !u!114 &1615336279
 MonoBehaviour:
@@ -11797,6 +11761,10 @@ MonoBehaviour:
   scaredGhostClip: {fileID: 8300000, guid: 038456ccd98075743831da18b3ca344b, type: 3}
   deadGhostClip: {fileID: 8300000, guid: f7018bfafd814e54e87ff7dc2020fc72, type: 3}
   dieClip: {fileID: 8300000, guid: 3fa6fbe687c63b64aaf2fd1ad5a52ae4, type: 3}
+  GhostRed: {fileID: 1215540601}
+  GhostPink: {fileID: 194927821}
+  GhostGreen: {fileID: 27637055}
+  GhostBlue: {fileID: 370970544}
   Started: 0
 --- !u!1 &1659155599
 GameObject:
