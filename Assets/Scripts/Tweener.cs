@@ -38,4 +38,8 @@ public class Tweener : MonoBehaviour
             activeTween = new Tween(targetObject, startPos, endPos, Time.time, duration);
         }
     }
+
+    public void DeleteTween(){
+        activeTween = null;
+    }
 }
