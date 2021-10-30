@@ -137,7 +137,6 @@ public class PacStudentController : MonoBehaviour
 
     void CheckDie()
     {
-        Debug.Log(pellets_num);
         if (pellets_num == 216)
         {
             Destroy(lifes[2]);
