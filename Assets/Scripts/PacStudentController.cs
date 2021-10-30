@@ -45,8 +45,12 @@ public class PacStudentController : MonoBehaviour
     private float deltatime;
     private bool gameover;
     private float[] ghost_die_time;
+    private float endtime;
+    private int pellets_num;
 
-    // Start is called before the first frame update
+    void awake()
+    {
+    }
     void Start()
     {
         Pac_Animator = GetComponent<Animator>();
@@ -58,6 +62,11 @@ public class PacStudentController : MonoBehaviour
             gameObject.transform.position = new Vector3(-Map_Size[0] + 1, Map_Size[1] - 2, 0);
             destination = new float[2] { gameObject.transform.position.x, gameObject.transform.position.y };
             source = new float[2] { gameObject.transform.position.x, gameObject.transform.position.y };
+            //Score.GetComponent<Text>().text = GameObject.Find("UserPrefrabs").GetComponent<Text>().text.Split(char.Parse(" "))[0];
+            scareTime = 0;
+            ghost_die_time = new float[4] { 0, 0, 0, 0 };
+            state = new int[4] { 0, 0, 0, 0 };
+            pellets_num = 0;
         }
         dust.Stop();
         hit.Stop();
@@ -66,9 +75,6 @@ public class PacStudentController : MonoBehaviour
         Background.GetComponent<Background_Music_Controller>().Started = false;
         continueTime = 0;
         allTime = 0;
-        ghost_die_time = new float[4] { 0,0,0,0};
-        scareTime = 0;
-        state = new int[4] { 0, 0, 0, 0 };
         dyingTime = 0;
         gameover = false;
         lifes = new GameObject[3]{
@@ -76,11 +82,20 @@ public class PacStudentController : MonoBehaviour
             GameObject.Find("life2"),
             GameObject.Find("life1"),
         };
+        endtime = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (endtime != 10 && endtime > 0)
+        {
+            endtime -= Time.deltaTime;
+        }
+        if (endtime != 10 && endtime <= 0)
+        {
+            GameObject.Find("ExitButton").GetComponent<UIManager>().LoadStartLevel();
+        }
         if (dyingTime > 0)
         {
             dyingTime -= Time.deltaTime;
@@ -122,10 +137,32 @@ public class PacStudentController : MonoBehaviour
 
     void CheckDie()
     {
+        Debug.Log(pellets_num);
+        if (pellets_num == 216)
+        {
+            Destroy(lifes[2]);
+            StartTime.GetComponent<Text>().text = "Game Over";
+            endtime = 3;
+            Started = false;
+            Background.GetComponent<Background_Music_Controller>().Started = false;
+            Pac_Animator.SetTrigger("Die");
+            Background.GetComponent<Background_Music_Controller>().playDie();
+            Moving_Sound.Stop();
+            dust.Stop();
+            tweener.DeleteTween();
+            tweener_bonus.DeleteTween();
+            gameover = true;
+            continueTime = 0;
+            if (int.Parse(Score.GetComponent<Text>().text) > int.Parse(GameObject.Find("UserPrefrabs").GetComponent<Text>().text.Split(char.Parse(" "))[0]))
+            {
+                GameObject.Find("UserPrefrabs").GetComponent<Text>().text = Score.GetComponent<Text>().text + " " + OverallTime.GetComponent<Text>().text;
+            }
+            return;
+        }
         GameObject[] Ghosts = new GameObject[4] { Red, Pink, Green, Blue };
         for (int i = 0; i < 4; i++)
         {
-            if (state[i] == 0 && Ghosts[i] != null && ((Ghosts[i].transform.position.x - gameObject.transform.position.x) * (Ghosts[i].transform.position.x - gameObject.transform.position.x) + (Ghosts[i].transform.position.y - gameObject.transform.position.y) * (Ghosts[i].transform.position.y - gameObject.transform.position.y)) < 0.5)
+            if (state[i] == 0 && Ghosts[i] != null && ((Ghosts[i].transform.position.x - gameObject.transform.position.x) * (Ghosts[i].transform.position.x - gameObject.transform.position.x) + (Ghosts[i].transform.position.y - gameObject.transform.position.y) * (Ghosts[i].transform.position.y - gameObject.transform.position.y)) < 0.3)
             {
                 if (lifes[0] != null)
                 {
@@ -139,6 +176,7 @@ public class PacStudentController : MonoBehaviour
                 {
                     Destroy(lifes[2]);
                     StartTime.GetComponent<Text>().text = "Game Over";
+                    endtime = 3;
                     Started = false;
                     Background.GetComponent<Background_Music_Controller>().Started = false;
                     Pac_Animator.SetTrigger("Die");
@@ -149,6 +187,10 @@ public class PacStudentController : MonoBehaviour
                     tweener_bonus.DeleteTween();
                     gameover = true;
                     continueTime = 0;
+                    if (int.Parse(Score.GetComponent<Text>().text) > int.Parse(GameObject.Find("UserPrefrabs").GetComponent<Text>().text.Split(char.Parse(" "))[0]))
+                    {
+                        GameObject.Find("UserPrefrabs").GetComponent<Text>().text = Score.GetComponent<Text>().text + " " + OverallTime.GetComponent<Text>().text;
+                    }
                     return;
                 }
                 Pac_Animator.SetTrigger("Die");
@@ -346,7 +388,7 @@ public class PacStudentController : MonoBehaviour
             if (map[Y_in_Map, X_in_Map] == 5) Score.GetComponent<Text>().text = (int.Parse(Score.GetComponent<Text>().text) + 10).ToString();
         }
 
-        if (Bonus_Pellet_Instance != null && ((Bonus_Pellet_Instance.transform.position.x - gameObject.transform.position.x) * (Bonus_Pellet_Instance.transform.position.x - gameObject.transform.position.x) + (Bonus_Pellet_Instance.transform.position.y - gameObject.transform.position.y) * (Bonus_Pellet_Instance.transform.position.y - gameObject.transform.position.y)) < 1)
+        if (Bonus_Pellet_Instance != null && ((Bonus_Pellet_Instance.transform.position.x - gameObject.transform.position.x) * (Bonus_Pellet_Instance.transform.position.x - gameObject.transform.position.x) + (Bonus_Pellet_Instance.transform.position.y - gameObject.transform.position.y) * (Bonus_Pellet_Instance.transform.position.y - gameObject.transform.position.y)) < 2)
         {
             Eat_Sound.Play();
             DestroyImmediate(Bonus_Pellet_Instance);
@@ -371,6 +413,7 @@ public class PacStudentController : MonoBehaviour
                     Destroy(eaten_pellet);
                     if (map[Y_in_Map - 1, X_in_Map] == 5)
                     {
+                        pellets_num += 1;
                         Score.GetComponent<Text>().text = (int.Parse(Score.GetComponent<Text>().text) + 10).ToString();
                     }
                     if (map[Y_in_Map - 1, X_in_Map] == 6)
@@ -397,6 +440,7 @@ public class PacStudentController : MonoBehaviour
                     Destroy(eaten_pellet);
                     if (map[Y_in_Map + 1, X_in_Map] == 5)
                     {
+                        pellets_num += 1;
                         Score.GetComponent<Text>().text = (int.Parse(Score.GetComponent<Text>().text) + 10).ToString();
                     }
                     if (map[Y_in_Map + 1, X_in_Map] == 6)
@@ -423,6 +467,7 @@ public class PacStudentController : MonoBehaviour
                     Destroy(eaten_pellet);
                     if (map[Y_in_Map, X_in_Map - 1] == 5)
                     {
+                        pellets_num += 1;
                         Score.GetComponent<Text>().text = (int.Parse(Score.GetComponent<Text>().text) + 10).ToString();
                     }
                     if (map[Y_in_Map, X_in_Map - 1] == 6)
@@ -449,6 +494,7 @@ public class PacStudentController : MonoBehaviour
                     Destroy(eaten_pellet);
                     if (map[Y_in_Map, X_in_Map + 1] == 5)
                     {
+                        pellets_num += 1;
                         Score.GetComponent<Text>().text = (int.Parse(Score.GetComponent<Text>().text) + 10).ToString();
                     }
                     if (map[Y_in_Map, X_in_Map + 1] == 6)

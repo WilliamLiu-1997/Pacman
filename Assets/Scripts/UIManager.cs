@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
@@ -18,11 +19,13 @@ public class UIManager : MonoBehaviour
 
     public void LoadFirstLevel()
     {
+        DontDestroyOnLoad(GameObject.Find("UserPrefrabs"));
         DontDestroyOnLoad(this.gameObject);
         SceneManager.LoadScene("PacStudent");
     }
     public void LoadStartLevel()
     {
+        DontDestroyOnLoad(GameObject.Find("UserPrefrabs"));
         SceneManager.LoadScene("StartScene");
     }
 
