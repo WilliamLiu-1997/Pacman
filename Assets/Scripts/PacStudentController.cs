@@ -153,9 +153,9 @@ public class PacStudentController : MonoBehaviour
             tweener_bonus.DeleteTween();
             gameover = true;
             continueTime = 0;
-            if (int.Parse(Score.GetComponent<Text>().text) > int.Parse(GameObject.Find("UserPrefrabs").GetComponent<Text>().text.Split(char.Parse(" "))[0]))
+            if (int.Parse(Score.GetComponent<Text>().text) > int.Parse(GameObject.Find("UserPrefrabs").GetComponent<Text>().text.Split(char.Parse(" "))[0]) || (int.Parse(Score.GetComponent<Text>().text) == int.Parse(GameObject.Find("UserPrefrabs").GetComponent<Text>().text.Split(char.Parse(" "))[0]) && float.Parse(GameObject.Find("UserPrefrabs").GetComponent<Text>().text.Split(char.Parse(" "))[1]) > allTime))
             {
-                GameObject.Find("UserPrefrabs").GetComponent<Text>().text = Score.GetComponent<Text>().text + " " + OverallTime.GetComponent<Text>().text;
+                GameObject.Find("UserPrefrabs").GetComponent<Text>().text = Score.GetComponent<Text>().text + " " + allTime.ToString();
             }
             return;
         }
@@ -187,9 +187,9 @@ public class PacStudentController : MonoBehaviour
                     tweener_bonus.DeleteTween();
                     gameover = true;
                     continueTime = 0;
-                    if (int.Parse(Score.GetComponent<Text>().text) > int.Parse(GameObject.Find("UserPrefrabs").GetComponent<Text>().text.Split(char.Parse(" "))[0]))
+                    if (int.Parse(Score.GetComponent<Text>().text) > int.Parse(GameObject.Find("UserPrefrabs").GetComponent<Text>().text.Split(char.Parse(" "))[0]) || (int.Parse(Score.GetComponent<Text>().text) == int.Parse(GameObject.Find("UserPrefrabs").GetComponent<Text>().text.Split(char.Parse(" "))[0]) && float.Parse(GameObject.Find("UserPrefrabs").GetComponent<Text>().text.Split(char.Parse(" "))[1]) > allTime))
                     {
-                        GameObject.Find("UserPrefrabs").GetComponent<Text>().text = Score.GetComponent<Text>().text + " " + OverallTime.GetComponent<Text>().text;
+                        GameObject.Find("UserPrefrabs").GetComponent<Text>().text = Score.GetComponent<Text>().text + " " + allTime.ToString();
                     }
                     return;
                 }
@@ -388,7 +388,7 @@ public class PacStudentController : MonoBehaviour
             if (map[Y_in_Map, X_in_Map] == 5) Score.GetComponent<Text>().text = (int.Parse(Score.GetComponent<Text>().text) + 10).ToString();
         }
 
-        if (Bonus_Pellet_Instance != null && ((Bonus_Pellet_Instance.transform.position.x - gameObject.transform.position.x) * (Bonus_Pellet_Instance.transform.position.x - gameObject.transform.position.x) + (Bonus_Pellet_Instance.transform.position.y - gameObject.transform.position.y) * (Bonus_Pellet_Instance.transform.position.y - gameObject.transform.position.y)) < 2)
+        if (Bonus_Pellet_Instance != null && ((Bonus_Pellet_Instance.transform.position.x - gameObject.transform.position.x) * (Bonus_Pellet_Instance.transform.position.x - gameObject.transform.position.x) + (Bonus_Pellet_Instance.transform.position.y - gameObject.transform.position.y) * (Bonus_Pellet_Instance.transform.position.y - gameObject.transform.position.y)) < 1.5)
         {
             Eat_Sound.Play();
             DestroyImmediate(Bonus_Pellet_Instance);

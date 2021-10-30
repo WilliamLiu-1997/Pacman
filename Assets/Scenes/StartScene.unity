@@ -1998,7 +1998,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1474799385466050998, guid: 84ca3979da9783b4b8fa8984289b77a5, type: 3}
       propertyPath: m_Text
-      value: 0 00:00:00:00
+      value: 0 0
       objectReference: {fileID: 0}
     - target: {fileID: 5495775323067174266, guid: 84ca3979da9783b4b8fa8984289b77a5, type: 3}
       propertyPath: m_Name
