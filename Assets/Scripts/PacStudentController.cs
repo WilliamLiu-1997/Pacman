@@ -20,12 +20,21 @@ public class PacStudentController : MonoBehaviour
     public GameObject Bonus_Pellet;
     public GameObject Score;
     public GameObject OverallTime;
+    public GameObject StartTime;
     public GameObject ScaredTime;
+    public GameObject Red;
+    public GameObject Pink;
+    public GameObject Green;
+    public GameObject Blue;
     public GameObject Bonus_Pellet_Instance;
     public GameObject Background;
     public int state;
+
+    public GameObject[] lifes;
+    public float dyingTime;
     public bool Started;
     public float continueTime;
+    public float lastTime;
     public float allTime;
     public float scareTime;
     private int[,] map;
@@ -34,6 +43,7 @@ public class PacStudentController : MonoBehaviour
     private float[] destination;
     private float[] source;
     private float deltatime;
+    private bool gameover;
 
     // Start is called before the first frame update
     void Start()
@@ -42,9 +52,12 @@ public class PacStudentController : MonoBehaviour
         LevelGenerator = GameObject.Find("Map").GetComponents<LevelGenerator>();
         Map_Size = LevelGenerator[0].Get_Size();
         map = LevelGenerator[0].Get_Map();
-        gameObject.transform.position = new Vector3(-Map_Size[0] + 1, Map_Size[1] - 2, 0);
-        destination = new float[2] { gameObject.transform.position.x, gameObject.transform.position.y };
-        source = new float[2] { gameObject.transform.position.x, gameObject.transform.position.y };
+        if (!(dyingTime == 4))
+        {
+            gameObject.transform.position = new Vector3(-Map_Size[0] + 1, Map_Size[1] - 2, 0);
+            destination = new float[2] { gameObject.transform.position.x, gameObject.transform.position.y };
+            source = new float[2] { gameObject.transform.position.x, gameObject.transform.position.y };
+        }
         dust.Stop();
         hit.Stop();
         deltatime = 10;
@@ -53,18 +66,44 @@ public class PacStudentController : MonoBehaviour
         continueTime = 0;
         allTime = 0;
         scareTime = 0;
-        Time.timeScale = 0;
         state = 0;
+        dyingTime = 0;
+        gameover = false;
+        lifes = new GameObject[3]{
+            GameObject.Find("life3"),
+            GameObject.Find("life2"),
+            GameObject.Find("life1"),
+        };
     }
 
     // Update is called once per frame
     void Update()
     {
-        continueTime += Time.unscaledDeltaTime;
-        if (!Started && continueTime >= 3)
+        if (dyingTime > 0)
+        {
+            dyingTime -= Time.deltaTime;
+            continueTime = 0;
+            if (dyingTime <= 0)
+            {
+                gameObject.transform.position = new Vector3(-Map_Size[0] + 1, Map_Size[1] - 2, 0);
+                destination = new float[2] { gameObject.transform.position.x, gameObject.transform.position.y };
+                source = new float[2] { gameObject.transform.position.x, gameObject.transform.position.y };
+                lastInput = null;
+                currentInput = null;
+            }
+        }
+        else if(!gameover)
+        {
+            continueTime += Time.deltaTime;
+        }
+        if (continueTime > 0 && continueTime < 1) { StartTime.GetComponent<Text>().text = "3"; }
+        else if (continueTime >= 1 && continueTime < 2) { StartTime.GetComponent<Text>().text = "2"; }
+        else if (continueTime >= 2 && continueTime < 3) { StartTime.GetComponent<Text>().text = "1"; }
+        else if (continueTime >= 3 && continueTime < 4) { StartTime.GetComponent<Text>().text = "GO!"; }
+        else if (continueTime >= 4 && continueTime < 5) { StartTime.GetComponent<Text>().text = ""; }
+        if (!Started && continueTime >= 4)
         {
             Started = true;
-            Time.timeScale = 1;
             Background.GetComponent<Background_Music_Controller>().Started = true;
         }
         if (Started)
@@ -75,6 +114,52 @@ public class PacStudentController : MonoBehaviour
             BonusPellet();
             increaseTime();
             GhostState();
+            CheckDie();
+        }
+    }
+
+    void CheckDie()
+    {
+        GameObject[] Ghosts = new GameObject[4] { Red, Green, Pink, Blue };
+        for (int i = 0; i < 4; i++)
+        {
+            if (state == 0 && Ghosts[i] != null && ((Ghosts[i].transform.position.x - gameObject.transform.position.x) * (Ghosts[i].transform.position.x - gameObject.transform.position.x) + (Ghosts[i].transform.position.y - gameObject.transform.position.y) * (Ghosts[i].transform.position.y - gameObject.transform.position.y)) < 0.5)
+            {
+                if(lifes[0]!=null){
+                    Destroy(lifes[0]);
+                }
+                else if (lifes[1] != null)
+                {
+                    Destroy(lifes[1]);
+                }
+                else if (lifes[2] != null)
+                {
+                    Destroy(lifes[2]);
+                    StartTime.GetComponent<Text>().text = "Game Over";
+                    Started = false;
+                    Background.GetComponent<Background_Music_Controller>().Started = false;
+                    Pac_Animator.SetTrigger("Die");
+                    Background.GetComponent<Background_Music_Controller>().playDie();
+                    Moving_Sound.Stop();
+                    dust.Stop();
+                    tweener.DeleteTween();
+                    tweener_bonus.DeleteTween();
+                    gameover = true;
+                    continueTime = 0;
+                    return;
+                }
+                Pac_Animator.SetTrigger("Die");
+                Background.GetComponent<Background_Music_Controller>().playDie();
+                Moving_Sound.Stop();
+                dust.Stop();
+                dyingTime = 4;
+                float t = allTime;
+                tweener.DeleteTween();
+                tweener_bonus.DeleteTween();
+                Start();
+                allTime = t;
+                dyingTime = 4;
+            }
         }
     }
 
@@ -102,7 +187,7 @@ public class PacStudentController : MonoBehaviour
         };
         if (scareTime > 0)
         {
-            ScaredTime.GetComponent<Text>().text = ((int)scareTime+1).ToString();
+            ScaredTime.GetComponent<Text>().text = ((int)scareTime + 1).ToString();
         }
         else
         {
