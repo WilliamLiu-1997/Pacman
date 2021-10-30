@@ -70,4 +70,11 @@ public class Ghost_Controller : MonoBehaviour
     {
         Ghost_Animator.SetTrigger("Die");
     }
+    public void Reset()
+    {
+        Ghost_Animator.ResetTrigger("Awake");
+        Ghost_Animator.ResetTrigger("Scare");
+        Ghost_Animator.ResetTrigger("Recover");
+        Ghost_Animator.ResetTrigger("Die");
+    }
 }

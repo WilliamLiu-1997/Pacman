@@ -28,7 +28,7 @@ public class PacStudentController : MonoBehaviour
     public GameObject Blue;
     public GameObject Bonus_Pellet_Instance;
     public GameObject Background;
-    public int state;
+    public int[] state;
 
     public GameObject[] lifes;
     public float dyingTime;
@@ -44,6 +44,7 @@ public class PacStudentController : MonoBehaviour
     private float[] source;
     private float deltatime;
     private bool gameover;
+    private float[] ghost_die_time;
 
     // Start is called before the first frame update
     void Start()
@@ -65,8 +66,9 @@ public class PacStudentController : MonoBehaviour
         Background.GetComponent<Background_Music_Controller>().Started = false;
         continueTime = 0;
         allTime = 0;
+        ghost_die_time = new float[4] { 0,0,0,0};
         scareTime = 0;
-        state = 0;
+        state = new int[4] { 0, 0, 0, 0 };
         dyingTime = 0;
         gameover = false;
         lifes = new GameObject[3]{
@@ -92,7 +94,7 @@ public class PacStudentController : MonoBehaviour
                 currentInput = null;
             }
         }
-        else if(!gameover)
+        else if (!gameover)
         {
             continueTime += Time.deltaTime;
         }
@@ -120,12 +122,13 @@ public class PacStudentController : MonoBehaviour
 
     void CheckDie()
     {
-        GameObject[] Ghosts = new GameObject[4] { Red, Green, Pink, Blue };
+        GameObject[] Ghosts = new GameObject[4] { Red, Pink, Green, Blue };
         for (int i = 0; i < 4; i++)
         {
-            if (state == 0 && Ghosts[i] != null && ((Ghosts[i].transform.position.x - gameObject.transform.position.x) * (Ghosts[i].transform.position.x - gameObject.transform.position.x) + (Ghosts[i].transform.position.y - gameObject.transform.position.y) * (Ghosts[i].transform.position.y - gameObject.transform.position.y)) < 0.5)
+            if (state[i] == 0 && Ghosts[i] != null && ((Ghosts[i].transform.position.x - gameObject.transform.position.x) * (Ghosts[i].transform.position.x - gameObject.transform.position.x) + (Ghosts[i].transform.position.y - gameObject.transform.position.y) * (Ghosts[i].transform.position.y - gameObject.transform.position.y)) < 0.5)
             {
-                if(lifes[0]!=null){
+                if (lifes[0] != null)
+                {
                     Destroy(lifes[0]);
                 }
                 else if (lifes[1] != null)
@@ -160,6 +163,13 @@ public class PacStudentController : MonoBehaviour
                 allTime = t;
                 dyingTime = 4;
             }
+            if ((state[i] == 1 || state[i] == 2) && Ghosts[i] != null && ((Ghosts[i].transform.position.x - gameObject.transform.position.x) * (Ghosts[i].transform.position.x - gameObject.transform.position.x) + (Ghosts[i].transform.position.y - gameObject.transform.position.y) * (Ghosts[i].transform.position.y - gameObject.transform.position.y)) < 0.5)
+            {
+                state[i] = 3;
+                ghost_die_time[i] = 5;
+                Background.GetComponent<Background_Music_Controller>().playDeadGhost(i);
+                Score.GetComponent<Text>().text = (int.Parse(Score.GetComponent<Text>().text) + 300).ToString();
+            }
         }
     }
 
@@ -169,22 +179,47 @@ public class PacStudentController : MonoBehaviour
         {
             scareTime -= Time.deltaTime;
         }
-        if (state == 0 && scareTime > 3)
+        for (int i = 0; i < 4; i++)
         {
-            Background.GetComponent<Background_Music_Controller>().playScaredGhost();
-            state = 1;
+            if (ghost_die_time[i] > 0)
+            {
+                ghost_die_time[i] -= Time.deltaTime;
+            }
         }
-        else if (state == 1 && scareTime <= 3)
+        for (int i = 0; i < 4; i++)
         {
-            Background.GetComponent<Background_Music_Controller>().playRecoverGhost();
-            state = 2;
+            if (state[i] == 0 && scareTime > 3)
+            {
+                Background.GetComponent<Background_Music_Controller>().playScaredGhost(i);
+                state[i] = 1;
+            }
+            else if (state[i] == 1 && scareTime <= 3)
+            {
+                Background.GetComponent<Background_Music_Controller>().playRecoverGhost(i);
+                state[i] = 2;
+            }
+            else if (state[i] == 2 && scareTime <= 0)
+            {
+                Background.GetComponent<Background_Music_Controller>().playNormalGhost(i);
+                scareTime = 0;
+                state[i] = 0;
+            };
         }
-        else if (state == 2 && scareTime < 0)
+        for (int i = 0; i < 4; i++)
         {
-            Background.GetComponent<Background_Music_Controller>().playNormalGhost();
-            scareTime = 0;
-            state = 0;
-        };
+            if (state[i] == 3 && ghost_die_time[i] > 0)
+            {
+                Background.GetComponent<Background_Music_Controller>().resetGhost(i);
+                Background.GetComponent<Background_Music_Controller>().playDeadGhost(i);
+            }
+            if (state[i] == 3 && ghost_die_time[i] <= 0)
+            {
+                state[i] = 0;
+                ghost_die_time[i] = 0;
+                Background.GetComponent<Background_Music_Controller>().resetGhost(i);
+                Background.GetComponent<Background_Music_Controller>().playNormalGhost(i);
+            }
+        }
         if (scareTime > 0)
         {
             ScaredTime.GetComponent<Text>().text = ((int)scareTime + 1).ToString();
