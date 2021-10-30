@@ -137,16 +137,14 @@ public class PacStudentController : MonoBehaviour
 
     void CheckDie()
     {
-        if (pellets_num == 216)
+        if (pellets_num == 218)
         {
-            Destroy(lifes[2]);
             StartTime.GetComponent<Text>().text = "Game Over";
             endtime = 3;
             Started = false;
             Background.GetComponent<Background_Music_Controller>().Started = false;
-            Pac_Animator.SetTrigger("Die");
-            Background.GetComponent<Background_Music_Controller>().playDie();
             Moving_Sound.Stop();
+            Background.GetComponent<Background_Music_Controller>().Stop();
             dust.Stop();
             tweener.DeleteTween();
             tweener_bonus.DeleteTween();
@@ -384,7 +382,11 @@ public class PacStudentController : MonoBehaviour
         {
             Eat_Sound.Play();
             Destroy(eaten_pellet);
-            if (map[Y_in_Map, X_in_Map] == 5) Score.GetComponent<Text>().text = (int.Parse(Score.GetComponent<Text>().text) + 10).ToString();
+            if (map[Y_in_Map, X_in_Map] == 5)
+            {
+                pellets_num += 1;
+                Score.GetComponent<Text>().text = (int.Parse(Score.GetComponent<Text>().text) + 10).ToString();
+            }
         }
 
         if (Bonus_Pellet_Instance != null && ((Bonus_Pellet_Instance.transform.position.x - gameObject.transform.position.x) * (Bonus_Pellet_Instance.transform.position.x - gameObject.transform.position.x) + (Bonus_Pellet_Instance.transform.position.y - gameObject.transform.position.y) * (Bonus_Pellet_Instance.transform.position.y - gameObject.transform.position.y)) < 1.5)

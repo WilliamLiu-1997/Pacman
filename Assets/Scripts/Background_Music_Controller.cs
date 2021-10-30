@@ -46,6 +46,11 @@ public class Background_Music_Controller : MonoBehaviour
         return (float)my_Audio.clip.length;
     }
 
+    public void Stop()
+    {
+        my_Audio.Stop();
+    }
+
     public void playStartGhost()
     {
         my_Audio.Stop();
